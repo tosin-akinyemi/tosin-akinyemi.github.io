@@ -1,348 +1,325 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Esther Akinyemi | Healthcare Compliance Specialist</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-body{font-family:'Inter',sans-serif;background:#fff;color:#1a1a2e;overflow-x:hidden;}
-a{text-decoration:none;color:inherit;}
-button{font-family:'Inter',sans-serif;cursor:pointer;}
-:root{
-  --navy:#0b1f3a;
-  --teal:#0a7c7c;
-  --teal-l:#0d9e9e;
-  --teal-xl:#12bfbf;
-  --teal-pale:#edfafa;
-  --teal-mid:#b2eded;
-  --gold:#c8963e;
-  --gray:#5a6a7e;
-  --lgray:#f4f6f8;
-  --border:#e2e8f0;
-  --white:#fff;
+:root {
+  --navy:    #0D1B2A;
+  --navy2:   #152236;
+  --blue:    #1B3A5C;
+  --mid:     #2E6DA4;
+  --sky:     #5B9BD5;
+  --pale:    #D6E8F7;
+  --cream:   #F4F7FA;
+  --white:   #FEFEFE;
+  --gold:    #B8892A;
+  --gold2:   #D4A94E;
+  --dark:    #060F1A;
+  --text:    #0D1B2A;
+  --muted:   #5C7080;
+  --border:  rgba(27,58,92,0.14);
+  --r: 8px;
+  /* aliases so existing CSS still works */
+  --forest:  var(--navy);
+  --forest2: var(--navy2);
+  --green:   var(--blue);
+  --sage:    var(--mid);
+  --mint:    var(--sky);
 }
-
-/* NAV */
-nav{position:fixed;top:0;width:100%;z-index:1000;padding:0 48px;transition:all .3s;}
-nav.scrolled{background:rgba(11,31,58,.97);backdrop-filter:blur(16px);}
-.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:68px;}
-.nav-logo{font-family:'Playfair Display',serif;font-weight:800;font-size:1.1rem;color:#fff;background:none;border:none;cursor:pointer;letter-spacing:.5px;}
-.nav-logo span{color:var(--teal-xl);}
-.nav-links{display:flex;gap:2px;align-items:center;}
-.nav-link{padding:7px 13px;border-radius:6px;background:none;border:none;color:rgba(255,255,255,.65);font-size:12.5px;font-weight:500;cursor:pointer;transition:all .15s;}
-.nav-link:hover,.nav-link.active{color:#fff;}
-.nav-link.active{color:var(--teal-xl);}
-.nav-cta{margin-left:12px;padding:9px 22px;border-radius:6px;background:var(--teal);color:#fff;font-size:13px;font-weight:600;border:none;cursor:pointer;transition:all .2s;}
-.nav-cta:hover{background:var(--teal-l);transform:translateY(-1px);}
-
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;line-height:1.6}
+nav{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(26,46,31,0.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.08)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:62px;padding:0 clamp(1rem,4vw,2.5rem);gap:1rem}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:#fff;text-decoration:none;white-space:nowrap;flex-shrink:0}
+.nav-logo span{color:var(--gold2)}
+.nav-links{display:flex;gap:clamp(.5rem,2vw,1.5rem);list-style:none;align-items:center}
+.nav-links a{font-size:.75rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.65);text-decoration:none;transition:color .2s;white-space:nowrap}
+.nav-links a:hover{color:var(--gold2)}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;border:none;background:none;flex-shrink:0}
+.burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:all .3s}
+.burger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.drawer{display:none;position:fixed;top:62px;left:0;right:0;bottom:0;background:var(--forest);z-index:899;padding:2rem clamp(1.5rem,6vw,3rem);overflow-y:auto;transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1)}
+.drawer.open{transform:translateX(0)}
+.drawer ul{list-style:none;display:flex;flex-direction:column}
+.drawer ul li a{display:block;padding:.9rem 0;font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:400;font-style:italic;color:rgba(255,255,255,.85);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.08);transition:color .2s,padding-left .2s}
+.drawer ul li a:hover{color:var(--gold2);padding-left:.4rem}
+@media(max-width:860px){.nav-links{display:none}.burger{display:flex}.drawer{display:block}}
+section{padding:clamp(4rem,8vw,7rem) clamp(1.25rem,5vw,3rem)}
+.container{max-width:1100px;margin:0 auto}
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--sage);margin-bottom:.75rem}
+.eyebrow::before{content:'';width:24px;height:1px;background:var(--mint)}
+h2.stitle{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3rem);font-weight:700;line-height:1.1;color:var(--forest);margin-bottom:2.5rem}
 /* HERO */
-#home{min-height:100vh;background:var(--navy);position:relative;overflow:hidden;display:flex;align-items:center;}
-.hero-bg-grad{position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(10,124,124,.18) 0%,transparent 70%),radial-gradient(ellipse at 10% 80%,rgba(10,124,124,.1) 0%,transparent 60%);}
-.hero-grid-lines{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:80px 80px;}
-.hero-glow{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(10,124,124,.15),transparent 70%);right:-100px;top:50%;transform:translateY(-50%);}
-.hero-inner{max-width:1200px;margin:0 auto;padding:120px 48px 80px;display:grid;grid-template-columns:1fr 480px;gap:60px;align-items:center;width:100%;position:relative;z-index:2;}
-.hero-tag{display:inline-flex;align-items:center;gap:10px;background:rgba(10,124,124,.15);border:1px solid rgba(10,124,124,.3);border-radius:100px;padding:8px 18px;margin-bottom:28px;}
-.hero-tag span{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal-xl);}
-.hero-tag-dot{width:6px;height:6px;border-radius:50%;background:var(--teal-xl);animation:pulse 2s infinite;}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(.8);}}
-.hero-name{font-family:'Playfair Display',serif;font-size:4.5rem;font-weight:900;color:#fff;line-height:1.0;letter-spacing:-2px;margin-bottom:16px;}
-.hero-name em{color:var(--teal-xl);font-style:normal;display:block;}
-.hero-role{font-size:.95rem;color:rgba(255,255,255,.5);font-weight:400;margin-bottom:20px;letter-spacing:.5px;}
-.hero-desc{font-size:.95rem;color:rgba(255,255,255,.65);line-height:1.85;max-width:500px;margin-bottom:40px;}
-.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:52px;}
-.btn-p{padding:14px 30px;border-radius:8px;font-weight:700;font-size:13.5px;background:var(--teal);color:#fff;border:none;cursor:pointer;transition:all .2s;letter-spacing:.3px;}
-.btn-p:hover{background:var(--teal-l);transform:translateY(-2px);box-shadow:0 8px 24px rgba(10,124,124,.35);}
-.btn-s{padding:14px 30px;border-radius:8px;font-weight:600;font-size:13.5px;background:rgba(255,255,255,.07);color:#fff;border:1px solid rgba(255,255,255,.2);cursor:pointer;transition:all .2s;}
-.btn-s:hover{background:rgba(255,255,255,.12);transform:translateY(-2px);}
-.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.06);border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.06);}
-.hstat{padding:20px 16px;text-align:center;background:rgba(255,255,255,.02);}
-.hstat .n{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--teal-xl);}
-.hstat .l{font-size:10px;color:rgba(255,255,255,.35);font-weight:600;letter-spacing:1.5px;text-transform:uppercase;margin-top:4px;}
-
-/* HERO PHOTO */
-.hero-photo-col{position:relative;display:flex;justify-content:center;}
-.hero-photo-card{width:420px;height:520px;border-radius:16px;overflow:hidden;position:relative;box-shadow:0 40px 80px rgba(0,0,0,.4);}
-.hero-photo-card img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;}
-.hero-photo-card .overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(11,31,58,.85) 100%);}
-.hero-photo-card .photo-info{position:absolute;bottom:0;left:0;right:0;padding:24px;}
-.photo-info-tag{display:inline-block;background:var(--teal);color:#fff;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;border-radius:4px;margin-bottom:8px;}
-.photo-info p{font-size:13px;color:rgba(255,255,255,.8);font-weight:500;}
-.hero-card-float{position:absolute;top:32px;right:-20px;background:#fff;border-radius:10px;padding:14px 18px;box-shadow:0 16px 40px rgba(0,0,0,.15);min-width:140px;}
-.hero-card-float .n{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--teal);}
-.hero-card-float .l{font-size:10px;color:var(--gray);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-top:2px;}
-.hero-card-float2{position:absolute;bottom:80px;left:-24px;background:var(--navy);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:14px 18px;box-shadow:0 16px 40px rgba(0,0,0,.3);}
-.hero-card-float2 .n{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--teal-xl);}
-.hero-card-float2 .l{font-size:10px;color:rgba(255,255,255,.4);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-top:2px;}
-
-/* SECTIONS */
-.section{padding:100px 48px;}
-.sec-inner{max-width:1200px;margin:0 auto;}
-.sec-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
-.sec-eyebrow span{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--teal);}
-.sec-eyebrow::before{content:'';width:28px;height:2px;background:var(--teal);border-radius:2px;}
-.sec-h{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:800;color:var(--navy);line-height:1.15;margin-bottom:16px;}
-.sec-h span{color:var(--teal);}
-.sec-sub{font-size:15px;color:var(--gray);line-height:1.8;max-width:600px;margin-bottom:52px;}
-.body-t{color:var(--gray);line-height:1.9;margin-bottom:16px;font-size:14.5px;}
-
-.bg-w{background:#fff;}
-.bg-l{background:var(--lgray);}
-.bg-n{background:var(--navy);}
-.bg-teal{background:linear-gradient(135deg,#062a2a,#0a3f3f);}
-
+#home{min-height:100svh;display:flex;align-items:center;background:var(--forest);padding-top:62px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.hero-bg::before{content:'';position:absolute;width:70vmax;height:70vmax;top:-20%;right:-25%;background:radial-gradient(circle,rgba(27,58,92,.6) 0%,transparent 65%);border-radius:50%}
+.hero-bg::after{content:'';position:absolute;width:40vmax;height:40vmax;bottom:-15%;left:-10%;background:radial-gradient(circle,rgba(184,137,42,.18) 0%,transparent 65%);border-radius:50%}
+.hero-grid{display:grid;grid-template-columns:1fr auto;gap:clamp(2rem,6vw,5rem);align-items:center;position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(201,151,58,.15);border:1px solid rgba(201,151,58,.3);border-radius:100px;padding:.35rem .9rem;font-size:.72rem;font-weight:500;letter-spacing:.06em;color:var(--gold2);margin-bottom:1.5rem}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--gold2);border-radius:50%}
+h1.hero-name{font-family:'Playfair Display',serif;font-size:clamp(3rem,8vw,5.5rem);font-weight:900;line-height:1.0;color:#fff;margin-bottom:1rem}
+h1.hero-name em{font-style:italic;color:var(--gold2)}
+.hero-sub{font-size:clamp(.88rem,1.8vw,1rem);color:rgba(255,255,255,.6);max-width:500px;line-height:1.75;margin-bottom:2rem}
+.hero-stats{display:flex;gap:clamp(1.5rem,4vw,3rem);margin-bottom:2.5rem;flex-wrap:wrap}
+.stat-val{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;color:#fff;line-height:1}
+.stat-label{font-size:.72rem;color:var(--mint);letter-spacing:.05em;margin-top:.2rem}
+.hero-btns{display:flex;gap:.75rem;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.7rem 1.5rem;font-size:.82rem;font-weight:600;letter-spacing:.04em;text-decoration:none;border-radius:4px;cursor:pointer;border:none;transition:all .2s;white-space:nowrap;font-family:'Inter',sans-serif}
+.btn-gold{background:var(--gold);color:#fff}
+.btn-gold:hover{background:var(--gold2);transform:translateY(-1px);box-shadow:0 6px 20px rgba(201,151,58,.3)}
+.btn-outline{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.3)}
+.btn-outline:hover{border-color:var(--gold2);color:var(--gold2)}
+/* Portrait */
+.portrait-wrap{position:relative;flex-shrink:0}
+.portrait-box{width:clamp(200px,26vw,320px);aspect-ratio:3/4;border-radius:6px 80px 6px 6px;overflow:hidden;position:relative;border:3px solid rgba(201,151,58,.25)}
+.portrait-box img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;position:relative;z-index:2}
+.portrait-fallback{position:absolute;inset:0;background:linear-gradient(160deg,var(--navy2) 0%,var(--blue) 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;z-index:1}
+.portrait-initials{font-family:'Playfair Display',serif;font-size:4rem;font-weight:700;color:rgba(255,255,255,.25);letter-spacing:.1em}
+.portrait-fallback p{font-size:.78rem;color:rgba(255,255,255,.4);text-align:center;padding:0 1rem}
+.avail-badge{position:absolute;bottom:-14px;left:-12px;background:var(--forest);border:1px solid rgba(201,151,58,.3);border-radius:8px;padding:.6rem 1rem;font-size:.72rem;color:rgba(255,255,255,.8);display:flex;align-items:center;gap:.5rem;box-shadow:0 8px 24px rgba(0,0,0,.3);white-space:nowrap}
+.dot-pulse{width:8px;height:8px;background:#4ade80;border-radius:50%;flex-shrink:0;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+.scroll-hint{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.3rem;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3);animation:bob 2.5s ease-in-out infinite;text-decoration:none}
+.scroll-hint::after{content:'';width:1px;height:28px;background:rgba(201,151,58,.4)}
+@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-5px)}}
+@media(max-width:700px){.hero-grid{grid-template-columns:1fr;text-align:center}.hero-stats{justify-content:center}.hero-btns{justify-content:center}.hero-sub{margin:0 auto 2rem}.portrait-wrap{order:-1;display:flex;justify-content:center}.portrait-box{width:min(200px,55vw)}.avail-badge{left:-4px}}
 /* ABOUT */
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
-.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px;}
-.astat{background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center;transition:all .2s;}
-.astat:hover{border-color:var(--teal);transform:translateY(-3px);box-shadow:0 8px 24px rgba(10,124,124,.1);}
-.astat .n{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--teal);}
-.astat .l{font-size:10.5px;color:var(--gray);margin-top:4px;font-weight:600;letter-spacing:1px;text-transform:uppercase;}
-.goal-cards{display:flex;flex-direction:column;gap:16px;margin-top:8px;}
-.goal-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px 22px;border-left:3px solid var(--teal);transition:all .2s;}
-.goal-card:hover{box-shadow:0 8px 24px rgba(10,124,124,.08);transform:translateX(4px);}
-.goal-card h4{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;}
-.goal-card p{font-size:13.5px;color:var(--gray);line-height:1.7;}
-
+#about{background:var(--white)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,5rem);align-items:start}
+.about-text p{font-size:.95rem;color:#2C3E50;line-height:1.8;margin-bottom:1.1rem}
+.goals{display:flex;flex-direction:column;gap:1rem}
+.goal{background:var(--cream);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem 1.4rem;border-left:3px solid var(--gold)}
+.goal h4{font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
+.goal p{font-size:.875rem;color:#334155;line-height:1.6}
+@media(max-width:768px){.about-grid{grid-template-columns:1fr}}
 /* EXPERIENCE */
-.exp-timeline{position:relative;padding-left:32px;}
-.exp-timeline::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--teal),transparent);}
-.exp-item{position:relative;margin-bottom:40px;}
-.exp-item::before{content:'';position:absolute;left:-38px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--teal);border:2px solid #fff;box-shadow:0 0 0 3px rgba(10,124,124,.2);}
-.exp-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:28px 32px;transition:all .2s;}
-.exp-card:hover{border-color:var(--teal-mid);box-shadow:0 8px 32px rgba(10,124,124,.08);}
-.exp-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;flex-wrap:wrap;gap:8px;}
-.exp-title{font-size:1rem;font-weight:700;color:var(--navy);}
-.exp-co{font-size:13px;color:var(--teal);font-weight:600;margin-top:3px;}
-.exp-badge{background:var(--teal-pale);color:var(--teal);font-size:11px;font-weight:600;padding:5px 14px;border-radius:100px;border:1px solid var(--teal-mid);white-space:nowrap;}
-.exp-card ul{padding-left:1.1rem;color:var(--gray);font-size:13.5px;line-height:1.85;}
-.exp-card li{margin-bottom:4px;}
-
+#experience{background:var(--forest);color:#fff}
+#experience .eyebrow{color:var(--mint)}
+#experience h2.stitle{color:#fff}
+.timeline{padding-left:clamp(1.5rem,4vw,2.5rem);position:relative}
+.timeline::before{content:'';position:absolute;left:0;top:.4rem;bottom:0;width:1px;background:rgba(127,185,154,.2)}
+.titem{position:relative;padding-bottom:clamp(1.5rem,3vw,2.25rem)}
+.titem::before{content:'';position:absolute;left:clamp(-1.65rem,-4.15vw,-2.65rem);top:.45rem;width:9px;height:9px;background:var(--gold);border-radius:50%;border:2px solid var(--forest)}
+.tmeta{display:flex;align-items:baseline;flex-wrap:wrap;gap:.4rem 1rem;margin-bottom:.4rem}
+.trole{font-weight:600;font-size:.95rem;color:#fff}
+.tco{font-size:.82rem;color:var(--gold2);font-weight:500}
+.tdate{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:rgba(255,255,255,.4);letter-spacing:.06em;margin-left:auto}
+.titem ul{padding-left:1rem;margin-top:.5rem}
+.titem li{font-size:.86rem;color:rgba(255,255,255,.65);line-height:1.65;margin-bottom:.25rem}
 /* PROJECTS */
-.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
-.proj-card{background:#fff;border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all .25s;}
-.proj-card:hover{transform:translateY(-6px);box-shadow:0 20px 48px rgba(10,124,124,.12);border-color:var(--teal-mid);}
-.proj-top{height:140px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
-.proj-top-bg{position:absolute;inset:0;}
-.proj-num-big{font-family:'Playfair Display',serif;font-size:6rem;font-weight:900;color:rgba(255,255,255,.08);position:absolute;right:20px;bottom:-10px;line-height:1;}
-.proj-label{position:relative;z-index:1;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.7);background:rgba(255,255,255,.1);padding:6px 16px;border-radius:100px;border:1px solid rgba(255,255,255,.15);}
-.proj-body{padding:24px 26px;}
-.proj-body h3{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:8px;}
-.proj-body p{color:var(--gray);font-size:13.5px;line-height:1.75;margin-bottom:14px;}
-.proj-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;}
-.ptag{font-size:11px;font-weight:600;color:var(--teal);background:var(--teal-pale);padding:4px 12px;border-radius:100px;border:1px solid var(--teal-mid);}
-.proj-divider{height:1px;background:var(--border);margin:16px 0;}
-.proj-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-.proj-detail h4{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gray);margin-bottom:6px;}
-.proj-detail p{font-size:12.5px;color:var(--gray);line-height:1.65;}
-.proj-outcome{margin-top:16px;background:linear-gradient(135deg,var(--teal-pale),#fff);border:1px solid var(--teal-mid);border-radius:8px;padding:12px 16px;font-size:12.5px;color:var(--teal);font-weight:600;}
-.proj-more{grid-column:1/-1;background:var(--lgray);border:1px dashed var(--border);border-radius:16px;padding:32px;text-align:center;}
-.proj-more p{font-size:14px;color:var(--gray);}
-.proj-more strong{color:var(--navy);}
-
+#projects{background:var(--cream)}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,460px),1fr));gap:1.25rem}
+.pcard{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:clamp(1.25rem,3vw,1.75rem);display:flex;flex-direction:column;gap:.9rem;transition:box-shadow .25s,transform .25s;position:relative;overflow:hidden}
+.pcard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--gold))}
+.pcard:hover{box-shadow:0 12px 40px rgba(26,46,31,.12);transform:translateY(-3px)}
+.phdr{display:flex;align-items:flex-start;justify-content:space-between;gap:.75rem}
+.pnum{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:var(--pale);line-height:1;flex-shrink:0}
+.prole{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sage);background:var(--pale);padding:.3em .7em;border-radius:3px;white-space:nowrap}
+.ptitle{font-family:'Playfair Display',serif;font-size:clamp(1.05rem,2.5vw,1.3rem);font-weight:700;color:var(--forest);line-height:1.25}
+.pdesc{font-size:.875rem;color:#334155;line-height:1.65}
+.ptags{display:flex;flex-wrap:wrap;gap:.35rem}
+.ptag{font-size:.68rem;font-weight:500;padding:.25em .6em;background:var(--pale);border:1px solid rgba(74,124,89,.2);border-radius:3px;color:var(--green);letter-spacing:.03em}
+.poutcome{display:flex;align-items:center;gap:.5rem;background:linear-gradient(90deg,rgba(74,124,89,.08),transparent);border-left:3px solid var(--sage);padding:.55rem .75rem;border-radius:0 4px 4px 0;font-size:.8rem;color:var(--sage);font-weight:600}
+.pdetail{display:none;animation:fadeIn .2s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.pcard.open .pdetail{display:block}
+.dgrid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:.75rem}
+.dblock h5{font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem}
+.dblock p{font-size:.82rem;color:#334155;line-height:1.55}
+.toggle{background:none;border:none;cursor:pointer;font-size:.78rem;color:var(--sage);font-weight:600;padding:0;display:flex;align-items:center;gap:.3rem;font-family:'Inter',sans-serif;transition:opacity .2s}
+.toggle:hover{opacity:.7}
+.tog-ico{transition:transform .25s}
+.pcard.open .tog-ico{transform:rotate(180deg)}
+.coming{text-align:center;padding:1.25rem;margin-top:1.25rem;font-size:.84rem;color:var(--muted);font-style:italic;border:1px dashed var(--border);border-radius:6px}
+@media(max-width:480px){.dgrid{grid-template-columns:1fr}}
 /* SKILLS */
-.skills-wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;}
-.skill-col h3{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--navy);margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid var(--teal);}
-.skill-item{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid var(--border);}
-.skill-item:last-child{border:none;}
-.skill-item span{font-size:14px;color:var(--gray);}
-.skill-dot{width:7px;height:7px;border-radius:50%;background:var(--teal);}
-.certs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:48px;}
-.cert-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:24px;display:flex;gap:16px;align-items:flex-start;transition:all .2s;}
-.cert-card:hover{border-color:var(--teal-mid);box-shadow:0 8px 24px rgba(10,124,124,.08);}
-.cert-bar{width:3px;min-height:44px;background:linear-gradient(180deg,var(--teal),var(--teal-mid));border-radius:4px;flex-shrink:0;}
-.cert-card h4{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:4px;line-height:1.3;}
-.cert-card p{font-size:12px;color:var(--gray);}
-
+#skills{background:var(--white)}
+.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr));gap:1rem}
+.scat{background:var(--cream);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem 1.4rem}
+.scat h3{font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--forest);margin-bottom:.8rem;padding-bottom:.6rem;border-bottom:2px solid var(--pale)}
+.spills{display:flex;flex-wrap:wrap;gap:.35rem;list-style:none}
+.spill{font-size:.78rem;color:var(--green);background:var(--white);border:1px solid rgba(74,124,89,.2);padding:.28em .65em;border-radius:3px;font-weight:500}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:1rem;margin-top:3rem}
+.ccard{background:var(--forest);color:#fff;border-radius:var(--r);padding:1.25rem 1.4rem;border-bottom:3px solid var(--gold)}
+.ccard h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:.35rem;line-height:1.3;color:#fff}
+.cmeta{font-size:.72rem;color:var(--mint);font-family:'JetBrains Mono',monospace}
 /* EVENTS */
-.ev-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
-.ev-card{background:#fff;border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all .25s;}
-.ev-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.08);}
-.ev-img-wrap{height:240px;overflow:hidden;position:relative;}
-.ev-img-wrap img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;}
-.ev-card:hover .ev-img-wrap img{transform:scale(1.04);}
-.ev-placeholder{height:240px;background:linear-gradient(135deg,var(--navy),#0a3f3f);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;}
-.ev-placeholder span{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);}
-.ev-body{padding:24px 26px;}
-.ev-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:10px;}
-.ev-body h3{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:6px;line-height:1.4;}
-.ev-meta{font-size:12.5px;color:var(--gray);margin-bottom:12px;font-weight:500;}
-.ev-body p{font-size:13.5px;color:var(--gray);line-height:1.75;}
-
+#events{background:var(--cream)}
+.egrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,400px),1fr));gap:1.5rem}
+.ecard{background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .2s,transform .2s}
+.ecard:hover{box-shadow:0 8px 28px rgba(26,46,31,.1);transform:translateY(-2px)}
+.eimg-wrap{position:relative;aspect-ratio:16/7;overflow:hidden;flex-shrink:0}
+.eimg-wrap img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;position:relative;z-index:2}
+.ecard:hover .eimg-wrap img{transform:scale(1.04)}
+.eimg-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1}
+.eimg-bg-forest{background:linear-gradient(135deg,#0D1B2A 0%,#1B3A5C 100%)}
+.eimg-bg-gold{background:linear-gradient(135deg,#1a1208 0%,#4a3010 100%)}
+.eimg-label{font-family:'Playfair Display',serif;font-size:1.1rem;font-style:italic;color:rgba(255,255,255,.5);text-align:center;padding:1rem}
+.ebody{padding:1.25rem 1.5rem;flex:1}
+.etype{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--sage);margin-bottom:.5rem;display:block}
+.etitle{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--forest);margin-bottom:.5rem;line-height:1.3}
+.edesc{font-size:.85rem;color:#334155;line-height:1.65}
 /* BLOG */
-.blog-layout{display:grid;grid-template-columns:3fr 2fr;gap:40px;align-items:start;}
-.blog-card{background:#fff;border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all .2s;}
-.blog-card:hover{box-shadow:0 16px 48px rgba(0,0,0,.08);}
-.blog-hero{background:linear-gradient(135deg,var(--navy) 0%,#0a3f3f 100%);padding:48px 40px;position:relative;overflow:hidden;}
-.blog-hero::before{content:'';position:absolute;width:300px;height:300px;border-radius:50%;background:rgba(10,124,124,.12);top:-100px;right:-60px;}
-.blog-hero::after{content:'';position:absolute;width:200px;height:200px;border-radius:50%;background:rgba(10,124,124,.08);bottom:-80px;left:-40px;}
-.blog-hero h3{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:#fff;line-height:1.45;position:relative;z-index:1;margin-bottom:10px;}
-.blog-hero p{font-size:12px;color:rgba(255,255,255,.4);position:relative;z-index:1;letter-spacing:.5px;}
-.blog-content{padding:32px 36px;}
-.blog-content p{color:var(--gray);font-size:14px;line-height:1.85;margin-bottom:20px;}
-.blog-link{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--teal);letter-spacing:.3px;transition:gap .2s;}
-.blog-link:hover{gap:12px;color:var(--teal-l);}
-.testi-stack{display:flex;flex-direction:column;gap:20px;}
-.testi-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:24px;position:relative;overflow:hidden;transition:all .2s;}
-.testi-card:hover{border-color:var(--teal-mid);box-shadow:0 8px 24px rgba(10,124,124,.08);}
-.testi-card::before{content:'"';font-family:'Playfair Display',serif;font-size:5rem;color:var(--teal-pale);position:absolute;top:-8px;left:16px;line-height:1;z-index:0;}
-.testi-card p{color:var(--gray);font-size:13px;line-height:1.8;font-style:italic;position:relative;z-index:1;margin-bottom:14px;margin-top:24px;}
-.testi-author{font-size:13px;font-weight:700;color:var(--navy);}
-
+#blog{background:var(--forest)}
+#blog .eyebrow{color:var(--mint)}
+#blog h2.stitle{color:#fff}
+.bcard{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:clamp(1.5rem,3vw,2.5rem);display:flex;flex-direction:column;gap:1rem;max-width:700px;border-top:3px solid var(--gold)}
+.bsrc{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35)}
+.btitle{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.2rem,3vw,1.65rem);font-weight:400;color:#fff;line-height:1.25}
+.btext{font-size:.88rem;color:rgba(255,255,255,.6);line-height:1.75}
+.endsec{margin-top:3.5rem}
+.endtitle{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:400;color:rgba(255,255,255,.7);margin-bottom:1.5rem}
+.egrid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:1rem}
+.endo{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--r);padding:1.5rem;border-top:3px solid var(--gold2);position:relative}
+.endo::before{content:'\201C';font-family:'Playfair Display',serif;font-size:4rem;color:rgba(201,151,58,.15);position:absolute;top:.1rem;left:.7rem;line-height:1}
+.endo blockquote{font-size:.875rem;color:rgba(255,255,255,.65);line-height:1.7;padding-top:1.25rem;font-style:italic}
+.endo cite{display:block;font-style:normal;font-size:.78rem;font-weight:600;color:var(--gold2);margin-top:.85rem;padding-top:.75rem;border-top:1px solid rgba(255,255,255,.1)}
 /* RESUME */
-.resume-container{max-width:920px;margin:0 auto;}
-.resume-dl{display:flex;justify-content:flex-end;margin-bottom:20px;}
-.resume-card{border-radius:16px;overflow:hidden;box-shadow:0 8px 48px rgba(0,0,0,.08);border:1px solid var(--border);}
-.res-head{background:linear-gradient(135deg,var(--navy),#0a3f3f);padding:44px 52px;}
-.res-name{font-family:'Playfair Display',serif;font-size:2rem;font-weight:800;color:#fff;letter-spacing:.5px;}
-.res-sub{color:rgba(255,255,255,.45);font-size:13px;margin:6px 0 20px;letter-spacing:.5px;}
-.res-contacts{display:flex;gap:28px;flex-wrap:wrap;font-size:12.5px;color:rgba(255,255,255,.55);}
-.res-contacts a{color:var(--teal-xl);}
-.res-summary{background:var(--teal-pale);padding:18px 52px;border-bottom:1px solid var(--teal-mid);}
-.res-summary p{color:var(--gray);font-size:13.5px;line-height:1.8;}
-.res-cols{display:grid;grid-template-columns:200px 1fr;}
-.res-left{background:var(--lgray);padding:28px 22px;border-right:1px solid var(--border);}
-.res-right{background:#fff;padding:28px 36px;}
-.res-h{font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--teal);border-bottom:1px solid var(--teal-mid);padding-bottom:6px;margin-bottom:14px;}
-.res-sec{margin-bottom:28px;}
-.edu-i{margin-bottom:14px;}
-.edu-i .d{font-weight:600;color:var(--navy);font-size:12px;line-height:1.4;}
-.edu-i .s{color:var(--teal);font-size:11px;margin-top:2px;}
-.edu-i .y{color:var(--gray);font-size:10.5px;}
-.sp{display:inline-block;background:var(--teal-pale);color:#0a5a5a;font-size:10.5px;font-weight:500;padding:2px 9px;border-radius:100px;margin:2px;border:1px solid var(--teal-mid);}
-.re{margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid #f1f5f9;}
-.re:last-child{border:none;margin:0;padding:0;}
-.re-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px;flex-wrap:wrap;gap:6px;}
-.re .t{font-weight:700;color:var(--navy);font-size:13px;}
-.re .c{color:var(--teal);font-size:11.5px;font-weight:600;margin-top:1px;}
-.re .d{background:var(--lgray);color:var(--gray);font-size:11px;padding:3px 10px;border-radius:100px;border:1px solid var(--border);}
-.re ul{padding-left:.9rem;color:var(--gray);font-size:12.5px;line-height:1.8;margin-top:6px;}
-
+#resume{background:var(--white)}
+.rwrap{display:grid;grid-template-columns:1fr 2fr;gap:clamp(2rem,5vw,4rem);align-items:start}
+.rcta{background:var(--forest);border-radius:12px;padding:1.75rem;text-align:center;margin-bottom:1.5rem;color:#fff}
+.rcta h3{font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:.4rem;color:#fff}
+.rcta p{font-size:.82rem;color:rgba(255,255,255,.55);margin-bottom:1.1rem;line-height:1.5}
+.rlinks{display:flex;flex-direction:column;gap:.1rem}
+.rlink{font-size:.82rem;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:.6rem;padding:.6rem 0;border-bottom:1px solid var(--border);transition:color .2s}
+.rlink:hover{color:var(--green)}
+.rlink:last-child{border-bottom:none}
+.rlbl{font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);min-width:58px;flex-shrink:0}
+.rsec{margin-bottom:2rem}
+.rstitle{font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--sage);padding-bottom:.45rem;border-bottom:2px solid var(--pale);margin-bottom:1rem}
+.ritem{margin-bottom:1.1rem}
+.rihdr{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:.2rem 1rem;margin-bottom:.25rem}
+.rirole{font-weight:600;font-size:.9rem;color:var(--forest)}
+.rico{font-size:.8rem;color:var(--sage);font-weight:500}
+.ridate{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--muted);white-space:nowrap}
+.ritem ul{padding-left:1rem;margin-top:.35rem}
+.ritem li{font-size:.83rem;color:#334155;line-height:1.6;margin-bottom:.2rem}
+.skillrow{display:flex;flex-wrap:wrap;gap:.35rem}
+.stag{font-size:.72rem;color:var(--green);background:var(--pale);border:1px solid rgba(74,124,89,.2);padding:.25em .65em;border-radius:3px;font-weight:500}
+@media(max-width:720px){.rwrap{grid-template-columns:1fr}.rside{order:1}.rmain{order:0}}
 /* CONTACT */
-#contact{background:linear-gradient(135deg,#061a2e 0%,#062a2a 100%);padding:100px 48px;position:relative;overflow:hidden;}
-#contact::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(10,124,124,.12),transparent 70%);right:-200px;top:50%;transform:translateY(-50%);}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1200px;margin:0 auto;position:relative;z-index:1;}
-.contact-left h2{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:800;color:#fff;line-height:1.2;margin-bottom:16px;}
-.contact-left h2 span{color:var(--teal-xl);}
-.contact-left p{color:rgba(255,255,255,.5);font-size:14.5px;line-height:1.85;margin-bottom:40px;}
-.contact-links{display:flex;flex-direction:column;gap:12px;}
-.contact-item{display:flex;align-items:center;gap:18px;padding:18px 22px;border:1px solid rgba(255,255,255,.07);border-radius:12px;transition:all .2s;cursor:pointer;}
-.contact-item:hover{border-color:rgba(10,124,124,.4);background:rgba(10,124,124,.08);}
-.contact-item-bar{width:2px;height:36px;background:linear-gradient(180deg,var(--teal),var(--teal-mid));border-radius:2px;flex-shrink:0;}
-.contact-item .cl{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:3px;}
-.contact-item .cv{font-size:13.5px;font-weight:600;color:#fff;}
-.contact-right{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:48px;}
-.contact-quote{font-family:'Playfair Display',serif;font-size:1.25rem;color:rgba(255,255,255,.8);line-height:1.75;font-style:italic;margin-bottom:28px;}
-.contact-quote-bar{width:48px;height:2px;background:var(--teal);border-radius:2px;margin-bottom:16px;}
-.contact-quote-name{font-size:12px;color:rgba(255,255,255,.3);font-weight:600;letter-spacing:2px;text-transform:uppercase;}
-
-footer{background:#040d16;color:#2d3f52;text-align:center;padding:24px 48px;font-size:12px;letter-spacing:.5px;border-top:1px solid #0a1a2a;}
-
-@media(max-width:960px){
-  .hero-inner,.about-grid,.proj-grid,.skills-wrap,.blog-layout,.contact-grid,.res-cols{grid-template-columns:1fr;}
-  .hero-inner{padding:100px 24px 60px;}
-  .hero-name{font-size:3rem;}
-  .hero-photo-card{width:100%;height:300px;}
-  .hero-card-float,.hero-card-float2{display:none;}
-  .section{padding:72px 24px;}
-  nav{padding:0 20px;}
-  .certs-grid,.ev-grid{grid-template-columns:1fr;}
-  .res-head,.res-summary{padding-left:28px;padding-right:28px;}
-  .res-right{padding:24px;}
-}
+#contact{background:linear-gradient(160deg,var(--dark) 0%,var(--forest2) 100%);text-align:center;color:#fff;position:relative;overflow:hidden}
+#contact::before{content:'';position:absolute;width:60vmax;height:60vmax;top:-20%;right:-25%;background:radial-gradient(circle,rgba(184,137,42,.1) 0%,transparent 70%);border-radius:50%;pointer-events:none}
+#contact .eyebrow{color:var(--gold2)}
+#contact h2.stitle{color:#fff}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,210px),1fr));gap:1rem;max-width:860px;margin:0 auto 3rem;position:relative}
+.clink{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--r);padding:1.4rem;text-decoration:none;color:#fff;transition:background .2s,border-color .2s,transform .2s;display:flex;flex-direction:column;align-items:flex-start;gap:.4rem}
+.clink:hover{background:rgba(201,151,58,.15);border-color:var(--gold2);transform:translateY(-2px)}
+.cltype{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold2)}
+.clval{font-size:.875rem;font-weight:500;word-break:break-all;text-align:left}
+.cquote{max-width:580px;margin:0 auto;position:relative;z-index:1}
+.cquote blockquote{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(.95rem,2.2vw,1.2rem);font-weight:400;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:.6rem}
+.cquote cite{font-size:.75rem;color:var(--gold2);font-style:normal;letter-spacing:.06em}
+footer{background:var(--dark);text-align:center;padding:1.1rem clamp(1rem,4vw,3rem);border-top:1px solid rgba(255,255,255,.06);font-size:.72rem;color:rgba(255,255,255,.25)}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav id="navbar">
+<nav>
   <div class="nav-inner">
-    <button class="nav-logo" onclick="goTo('home')">Esther <span>Akinyemi</span></button>
-    <div class="nav-links">
-      <button class="nav-link active" onclick="goTo('home')">Home</button>
-      <button class="nav-link" onclick="goTo('about')">About</button>
-      <button class="nav-link" onclick="goTo('experience')">Experience</button>
-      <button class="nav-link" onclick="goTo('projects')">Projects</button>
-      <button class="nav-link" onclick="goTo('skills')">Skills</button>
-      <button class="nav-link" onclick="goTo('events')">Events</button>
-      <button class="nav-link" onclick="goTo('blog')">Blog</button>
-      <button class="nav-link" onclick="goTo('resume')">Resume</button>
-      <button class="nav-cta" onclick="goTo('contact')">Contact Me</button>
-    </div>
+    <a class="nav-logo" href="#home">Esther <span>Akinyemi</span></a>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="#resume">Resume</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
-<!-- HOME -->
+<div class="drawer" id="drawer" aria-hidden="true">
+  <ul>
+    <li><a href="#home" class="dl">Home</a></li>
+    <li><a href="#about" class="dl">About</a></li>
+    <li><a href="#experience" class="dl">Experience</a></li>
+    <li><a href="#projects" class="dl">Projects</a></li>
+    <li><a href="#skills" class="dl">Skills</a></li>
+    <li><a href="#events" class="dl">Events</a></li>
+    <li><a href="#blog" class="dl">Blog</a></li>
+    <li><a href="#resume" class="dl">Resume</a></li>
+    <li><a href="#contact" class="dl">Contact</a></li>
+  </ul>
+</div>
+
+<!-- HERO -->
 <section id="home">
-  <div class="hero-bg-grad"></div>
-  <div class="hero-grid-lines"></div>
-  <div class="hero-glow"></div>
-  <div class="hero-inner">
-    <div>
-      <div class="hero-tag"><div class="hero-tag-dot"></div><span>Healthcare Compliance Specialist</span></div>
-      <h1 class="hero-name">Esther<em>Akinyemi.</em></h1>
-      <p class="hero-role">Project Coordinator &amp; Compliance Specialist &mdash; Toronto, Ontario</p>
-      <p class="hero-desc">Bridging cloud security and healthcare compliance standards with precision. Helping organizations navigate complex regulatory landscapes with integrity and strategic insight.</p>
-      <div class="hero-btns">
-        <button class="btn-p" onclick="goTo('projects')">View My Work</button>
-        <button class="btn-s" onclick="goTo('resume')">Download Resume</button>
-        <button class="btn-s" onclick="goTo('contact')">Get In Touch</button>
-      </div>
-      <div class="hero-stats">
-        <div class="hstat"><div class="n">5+</div><div class="l">Years Exp</div></div>
-        <div class="hstat"><div class="n">$5M+</div><div class="l">ARR Managed</div></div>
-        <div class="hstat"><div class="n">100%</div><div class="l">Audit Pass</div></div>
-        <div class="hstat"><div class="n">3</div><div class="l">Certifications</div></div>
-      </div>
-    </div>
-    <div class="hero-photo-col">
-      <div class="hero-photo-card">
-        <img src="https://tosin-akinyemi.github.io/portfolio.jpeg" alt="Esther Akinyemi"
-          onerror="this.onerror=null;this.style.background='#0a3f3f';this.style.display='flex';"/>
-        <div class="overlay"></div>
-        <div class="photo-info">
-          <div class="photo-info-tag">Open to Opportunities</div>
-          <p>Toronto, Ontario, Canada</p>
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-badge">Healthcare Compliance Specialist</div>
+        <h1 class="hero-name">Esther<br><em>Akinyemi.</em></h1>
+        <p class="hero-sub">Project Coordinator &amp; Compliance Specialist — Toronto, Ontario. Bridging cloud security and healthcare compliance standards with precision.</p>
+        <div class="hero-stats">
+          <div><div class="stat-val">5+</div><div class="stat-label">Years Exp</div></div>
+          <div><div class="stat-val">$5M+</div><div class="stat-label">ARR Managed</div></div>
+          <div><div class="stat-val">100%</div><div class="stat-label">Audit Pass</div></div>
+          <div><div class="stat-val">3</div><div class="stat-label">Certifications</div></div>
+        </div>
+        <div class="hero-btns">
+          <a href="#projects" class="btn btn-gold">View My Work</a>
+          <a href="#resume" class="btn btn-outline">Download Resume</a>
+          <a href="#contact" class="btn btn-outline">Get In Touch</a>
         </div>
       </div>
-      <div class="hero-card-float">
-        <div class="n">$5M+</div><div class="l">ARR Managed</div>
-      </div>
-      <div class="hero-card-float2">
-        <div class="n">100%</div><div class="l">Audit Pass Rate</div>
+      <div class="portrait-wrap">
+        <div class="portrait-box">
+          <!-- Fallback shown immediately, hidden when image loads -->
+          <div class="portrait-fallback" id="pFallback">
+            <div class="portrait-initials">EA</div>
+            <p>Esther Akinyemi</p>
+          </div>
+          <img
+            id="heroImg"
+            src="https://tosin-akinyemi.github.io/portfolio.jpeg"
+            alt="Esther Akinyemi"
+            loading="eager"
+            crossorigin="anonymous"
+            style="opacity:0;transition:opacity .4s"
+            onload="this.style.opacity='1';document.getElementById('pFallback').style.display='none'"
+            onerror="this.style.display='none'">
+        </div>
+        <div class="avail-badge">
+          <span class="dot-pulse"></span>Open to Opportunities · Toronto, ON
+        </div>
       </div>
     </div>
   </div>
-  <div style="text-align:center;padding-bottom:36px;color:#1e3a5f;font-size:10px;letter-spacing:4px;text-transform:uppercase;position:relative;z-index:2;">Scroll to explore</div>
+  <a href="#about" class="scroll-hint" aria-label="Scroll down">Scroll</a>
 </section>
 
 <!-- ABOUT -->
-<section id="about" class="section bg-w">
-  <div class="sec-inner">
+<section id="about">
+  <div class="container">
+    <span class="eyebrow">Biography</span>
+    <h2 class="stitle">About Me</h2>
     <div class="about-grid">
-      <div>
-        <div class="sec-eyebrow"><span>Biography</span></div>
-        <h2 class="sec-h">About <span>Me</span></h2>
-        <p class="body-t">I am Esther Akinyemi — a Healthcare Compliance Specialist and Project Coordinator based in Toronto, Ontario. With over five years of experience across telecom, hospitality, and technology sectors, I specialize in driving customer success, managing complex compliance frameworks, and coordinating cross-functional teams to deliver measurable results.</p>
-        <p class="body-t">I am currently pivoting into healthcare compliance — leveraging deep expertise in HIPAA, PIPEDA, and GCP cloud security to help healthcare organizations build robust, ethical, and secure compliance frameworks that enable rather than restrict innovation.</p>
-        <p class="body-t">My academic background includes a Master's in Informatics with a mixed concentration in Cloud Computing and Information Security from Northeastern University, a Diploma in Digital Business Management from Toronto School of Management, and a Bachelor's in Sociology and Anthropology.</p>
-        <div class="about-stats">
-          <div class="astat"><div class="n">5+</div><div class="l">Years Exp</div></div>
-          <div class="astat"><div class="n">$5M+</div><div class="l">ARR Managed</div></div>
-          <div class="astat"><div class="n">100%</div><div class="l">Audit Pass</div></div>
-        </div>
+      <div class="about-text">
+        <p>I am Esther Akinyemi — a Healthcare Compliance Specialist and Project Coordinator based in Toronto, Ontario. With over five years of experience across telecom, hospitality, and technology sectors, I specialize in driving customer success, managing complex compliance frameworks, and coordinating cross-functional teams to deliver measurable results.</p>
+        <p>I am currently pivoting into healthcare compliance — leveraging deep expertise in HIPAA, PIPEDA, and GCP cloud security to help healthcare organizations build robust, ethical, and secure compliance frameworks that enable rather than restrict innovation.</p>
+        <p>My academic background includes a Master's in Informatics with a mixed concentration in Cloud Computing and Information Security from Northeastern University, a Diploma in Digital Business Management from Toronto School of Management, and a Bachelor's in Sociology and Anthropology.</p>
       </div>
       <div>
-        <div class="sec-eyebrow"><span>Career Goals</span></div>
-        <h2 class="sec-h">Where I'm <span>Headed</span></h2>
-        <p class="body-t">My ambition is to grow into a senior leadership role in healthcare compliance and data governance.</p>
-        <div class="goal-cards">
-          <div class="goal-card"><h4>Short-Term Goal</h4><p>Secure a Healthcare Compliance or Project Coordinator role where I can apply HIPAA, PIPEDA, and GCP compliance expertise to drive organizational security and patient data protection.</p></div>
-          <div class="goal-card"><h4>Long-Term Vision</h4><p>Lead compliance and data governance strategy at an enterprise level, championing ethical AI adoption and robust security frameworks across the healthcare industry.</p></div>
-          <div class="goal-card"><h4>Continuous Learning</h4><p>Actively expanding knowledge in AI security, LLMs, and data governance through industry events, certifications, and professional community engagement.</p></div>
+        <span class="eyebrow">Career Goals</span>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--forest);margin-bottom:1.25rem;">Where I'm Headed</h3>
+        <div class="goals">
+          <div class="goal"><h4>Short-Term Goal</h4><p>Secure a Healthcare Compliance or Project Coordinator role where I can apply HIPAA, PIPEDA, and GCP compliance expertise to drive organizational security and patient data protection.</p></div>
+          <div class="goal"><h4>Long-Term Vision</h4><p>Lead compliance and data governance strategy at an enterprise level, championing ethical AI adoption and robust security frameworks across the healthcare industry.</p></div>
+          <div class="goal"><h4>Continuous Learning</h4><p>Actively expanding knowledge in AI security, LLMs, and data governance through industry events, certifications, and professional community engagement.</p></div>
         </div>
       </div>
     </div>
@@ -350,251 +327,198 @@ footer{background:#040d16;color:#2d3f52;text-align:center;padding:24px 48px;font
 </section>
 
 <!-- EXPERIENCE -->
-<section id="experience" class="section bg-l">
-  <div class="sec-inner">
-    <div class="sec-eyebrow"><span>Career History</span></div>
-    <h2 class="sec-h">Work <span>Experience</span></h2>
-    <div class="exp-timeline">
-      <div class="exp-item"><div class="exp-card"><div class="exp-header"><div><div class="exp-title">Website Team Member</div><div class="exp-co">Research Impact</div></div><span class="exp-badge">Jul 2025 &ndash; Aug 2025</span></div><ul><li>Coordinated with designers and developers to integrate APIs and AI models, delivering enhanced website functionality on schedule.</li><li>Managed testing and debugging phases, ensuring project milestones and performance targets were met.</li></ul></div></div>
-      <div class="exp-item"><div class="exp-card"><div class="exp-header"><div><div class="exp-title">Customer Success Manager</div><div class="exp-co">Shaw Direct</div></div><span class="exp-badge">Mar 2023 &ndash; Apr 2024</span></div><ul><li>Coordinated customer lifecycle projects achieving 50% CSAT increase, 30% retention boost, and 20% account growth.</li><li>Led cross-functional teams to resolve issues first-contact, managing stakeholder expectations and timelines.</li><li>Directed proactive communication strategies to maintain project deliverables.</li></ul></div></div>
-      <div class="exp-item"><div class="exp-card"><div class="exp-header"><div><div class="exp-title">Administrator</div><div class="exp-co">Covenant Nation</div></div><span class="exp-badge">May 2024 &ndash; Jan 2025</span></div><ul><li>Responded to client inquiries via phone and email, addressing questions, complaints, and needs.</li><li>Planned and coordinated travel arrangements and administrative tasks.</li><li>Collaborated across teams to develop strategies for improving operational efficiency.</li></ul></div></div>
-      <div class="exp-item"><div class="exp-card"><div class="exp-header"><div><div class="exp-title">Technical Support Representative</div><div class="exp-co">Digital Bananas Technology, Lagos</div></div><span class="exp-badge">Jan 2023 &ndash; Feb 2023</span></div><ul><li>Coordinated Ethernet infrastructure for multi-school cybersecurity competition, ensuring event readiness.</li><li>Maintained network reliability under tight deadlines with technical teams.</li></ul></div></div>
-      <div class="exp-item"><div class="exp-card"><div class="exp-header"><div><div class="exp-title">Customer Specialist</div><div class="exp-co">Digital Bananas Technology, Lagos</div></div><span class="exp-badge">Mar 2018 &ndash; Jan 2022</span></div><ul><li>Oversaw $5M+ ARR portfolio, coordinating upselling campaigns and technical resolutions across multiple customer projects.</li><li>Managed concurrent tasks and stakeholder escalations with full solution follow-through.</li></ul></div></div>
+<section id="experience">
+  <div class="container">
+    <span class="eyebrow">Career History</span>
+    <h2 class="stitle">Work Experience</h2>
+    <div class="timeline">
+      <div class="titem">
+        <div class="tmeta"><span class="trole">Website Team Member</span><span class="tco">Research Impact</span><span class="tdate">Jul 2025 – Aug 2025</span></div>
+        <ul><li>Coordinated with designers and developers to integrate APIs and AI models, delivering enhanced website functionality on schedule.</li><li>Managed testing and debugging phases, ensuring project milestones and performance targets were met.</li></ul>
+      </div>
+      <div class="titem">
+        <div class="tmeta"><span class="trole">Administrator</span><span class="tco">Covenant Nation</span><span class="tdate">May 2024 – Jan 2025</span></div>
+        <ul><li>Responded to client inquiries via phone and email, addressing questions, complaints, and needs.</li><li>Planned and coordinated travel arrangements and administrative tasks.</li><li>Collaborated across teams to develop strategies for improving operational efficiency.</li></ul>
+      </div>
+      <div class="titem">
+        <div class="tmeta"><span class="trole">Customer Success Manager</span><span class="tco">Shaw Direct</span><span class="tdate">Mar 2023 – Apr 2024</span></div>
+        <ul><li>Coordinated customer lifecycle projects achieving 50% CSAT increase, 30% retention boost, and 20% account growth.</li><li>Led cross-functional teams to resolve issues first-contact, managing stakeholder expectations and timelines.</li><li>Directed proactive communication strategies to maintain project deliverables.</li></ul>
+      </div>
+      <div class="titem">
+        <div class="tmeta"><span class="trole">Technical Support Representative</span><span class="tco">Digital Bananas Technology, Lagos</span><span class="tdate">Jan 2023 – Feb 2023</span></div>
+        <ul><li>Coordinated Ethernet infrastructure for multi-school cybersecurity competition, ensuring event readiness.</li><li>Maintained network reliability under tight deadlines with technical teams.</li></ul>
+      </div>
+      <div class="titem">
+        <div class="tmeta"><span class="trole">Customer Specialist</span><span class="tco">Digital Bananas Technology, Lagos</span><span class="tdate">Mar 2018 – Jan 2022</span></div>
+        <ul><li>Oversaw $5M+ ARR portfolio, coordinating upselling campaigns and technical resolutions across multiple customer projects.</li><li>Managed concurrent tasks and stakeholder escalations with full solution follow-through.</li></ul>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- PROJECTS -->
-<section id="projects" class="section bg-w">
-  <div class="sec-inner">
-    <div class="sec-eyebrow"><span>Project Samples</span></div>
-    <h2 class="sec-h">Featured <span>Projects</span></h2>
-    <p class="sec-sub">A curated selection of my strongest work — showcasing key skills, my role, and reflections on learning and impact.</p>
-    <div class="proj-grid">
-      <div class="proj-card">
-        <div class="proj-top"><div class="proj-top-bg" style="background:linear-gradient(135deg,#062a2a,#0a5a5a);"></div><div class="proj-num-big">01</div><span class="proj-label">Compliance Lead</span></div>
-        <div class="proj-body">
-          <h3>Hinsight GCP Compliance</h3>
-          <p>Led GCP compliance for Hinsight's healthcare dashboards, implementing BAA agreements, IAM role separation, and audit logging to ensure full HIPAA and PIPEDA adherence.</p>
-          <div class="proj-tags"><span class="ptag">HIPAA</span><span class="ptag">PIPEDA</span><span class="ptag">GCP</span><span class="ptag">IAM</span><span class="ptag">Healthcare</span></div>
-          <div class="proj-divider"></div>
-          <div class="proj-row">
-            <div class="proj-detail"><h4>Key Skills</h4><p>Cloud compliance, BAA implementation, IAM design, audit logging, data governance.</p></div>
-            <div class="proj-detail"><h4>Reflection</h4><p>Reinforced that compliance enables confident decision-making rather than restricting it.</p></div>
-          </div>
-          <div class="proj-outcome">Full HIPAA &amp; PIPEDA compliance achieved across all dashboards</div>
-        </div>
-      </div>
-      <div class="proj-card">
-        <div class="proj-top"><div class="proj-top-bg" style="background:linear-gradient(135deg,#0b1f3a,#0a4a6a);"></div><div class="proj-num-big">02</div><span class="proj-label">Project Coordinator</span></div>
-        <div class="proj-body">
-          <h3>CRM Workflow Optimization</h3>
-          <p>Optimized CRM workflows at a digital agency integrating HubSpot and Salesforce with Asana and Trello. Conducted cloud security audits across wellness platforms with actionable remediation plans.</p>
-          <div class="proj-tags"><span class="ptag">HubSpot</span><span class="ptag">Salesforce</span><span class="ptag">Cloud Security</span><span class="ptag">Agile</span></div>
-          <div class="proj-divider"></div>
-          <div class="proj-row">
-            <div class="proj-detail"><h4>Key Skills</h4><p>CRM integration, workflow automation, security auditing, gap analysis, cross-functional coordination.</p></div>
-            <div class="proj-detail"><h4>Reflection</h4><p>Efficiency and compliance are complementary, not competing priorities.</p></div>
-          </div>
-          <div class="proj-outcome">30% increase in client pipeline efficiency</div>
-        </div>
-      </div>
-      <div class="proj-card">
-        <div class="proj-top"><div class="proj-top-bg" style="background:linear-gradient(135deg,#1e1b4b,#3730a3);"></div><div class="proj-num-big">03</div><span class="proj-label">Capstone Project</span></div>
-        <div class="proj-body">
-          <h3>Capstone Compliance Audit</h3>
-          <p>End-to-end compliance gap audit across multiple wellness platforms. Developed detailed remediation roadmaps and governance frameworks aligned with current regulatory standards.</p>
-          <div class="proj-tags"><span class="ptag">Audit</span><span class="ptag">Gap Analysis</span><span class="ptag">Governance</span><span class="ptag">Regulatory</span></div>
-          <div class="proj-divider"></div>
-          <div class="proj-row">
-            <div class="proj-detail"><h4>Key Skills</h4><p>Compliance auditing, risk assessment, governance framework design, remediation planning.</p></div>
-            <div class="proj-detail"><h4>Reflection</h4><p>Systematic auditing builds a lasting culture of compliance within organizations.</p></div>
-          </div>
-          <div class="proj-outcome">100% compliance gap closure achieved across all platforms</div>
-        </div>
-      </div>
-      <div class="proj-card">
-        <div class="proj-top"><div class="proj-top-bg" style="background:linear-gradient(135deg,#0b1f3a,#064e3b);"></div><div class="proj-num-big">04</div><span class="proj-label">Website Team Member</span></div>
-        <div class="proj-body">
-          <h3>Website Redevelopment &mdash; Research Impact</h3>
-          <p>Coordinated API and AI model integrations at Research Impact, managing testing and debugging phases to deliver enhanced functionality on schedule and within all performance targets.</p>
-          <div class="proj-tags"><span class="ptag">API Integration</span><span class="ptag">AI Models</span><span class="ptag">QA Testing</span></div>
-          <div class="proj-divider"></div>
-          <div class="proj-row">
-            <div class="proj-detail"><h4>Key Skills</h4><p>API coordination, AI oversight, QA testing, project timeline management, stakeholder communication.</p></div>
-            <div class="proj-detail"><h4>Reflection</h4><p>Strengthened my ability to bridge technical and business stakeholder communication.</p></div>
-          </div>
-          <div class="proj-outcome">Delivered on schedule with all performance targets met</div>
-        </div>
-      </div>
-      <div class="proj-more"><p><strong>More projects coming soon.</strong> This portfolio is updated regularly — check back for new additions.</p></div>
+<section id="projects">
+  <div class="container">
+    <span class="eyebrow">Project Samples</span>
+    <h2 class="stitle">Featured Projects</h2>
+    <div class="pgrid">
+      <article class="pcard">
+        <div class="phdr"><span class="pnum">01</span><span class="prole">Compliance Lead</span></div>
+        <h3 class="ptitle">Hinsight GCP Compliance</h3>
+        <p class="pdesc">Led GCP compliance for Hinsight's healthcare dashboards, implementing BAA agreements, IAM role separation, and audit logging to ensure full HIPAA and PIPEDA adherence.</p>
+        <div class="ptags"><span class="ptag">HIPAA</span><span class="ptag">PIPEDA</span><span class="ptag">GCP</span><span class="ptag">IAM</span><span class="ptag">Healthcare</span></div>
+        <div class="poutcome">✓ Full HIPAA &amp; PIPEDA compliance achieved across all dashboards</div>
+        <button class="toggle" onclick="toggleCard(this)" aria-expanded="false">Details <span class="tog-ico">▾</span></button>
+        <div class="pdetail"><div class="dgrid"><div class="dblock"><h5>Key Skills</h5><p>Cloud compliance, BAA implementation, IAM design, audit logging, data governance.</p></div><div class="dblock"><h5>Reflection</h5><p>Reinforced that compliance enables confident decision-making rather than restricting it.</p></div></div></div>
+      </article>
+      <article class="pcard">
+        <div class="phdr"><span class="pnum">02</span><span class="prole">Project Coordinator</span></div>
+        <h3 class="ptitle">CRM Workflow Optimization</h3>
+        <p class="pdesc">Optimized CRM workflows integrating HubSpot and Salesforce with Asana and Trello. Conducted cloud security audits across wellness platforms with actionable remediation plans.</p>
+        <div class="ptags"><span class="ptag">HubSpot</span><span class="ptag">Salesforce</span><span class="ptag">Cloud Security</span><span class="ptag">Agile</span></div>
+        <div class="poutcome">✓ 30% increase in client pipeline efficiency</div>
+        <button class="toggle" onclick="toggleCard(this)" aria-expanded="false">Details <span class="tog-ico">▾</span></button>
+        <div class="pdetail"><div class="dgrid"><div class="dblock"><h5>Key Skills</h5><p>CRM integration, workflow automation, security auditing, gap analysis, cross-functional coordination.</p></div><div class="dblock"><h5>Reflection</h5><p>Efficiency and compliance are complementary, not competing priorities.</p></div></div></div>
+      </article>
+      <article class="pcard">
+        <div class="phdr"><span class="pnum">03</span><span class="prole">Capstone Project</span></div>
+        <h3 class="ptitle">Capstone Compliance Audit</h3>
+        <p class="pdesc">End-to-end compliance gap audit across multiple wellness platforms. Developed detailed remediation roadmaps and governance frameworks aligned with current regulatory standards.</p>
+        <div class="ptags"><span class="ptag">Audit</span><span class="ptag">Gap Analysis</span><span class="ptag">Governance</span><span class="ptag">Regulatory</span></div>
+        <div class="poutcome">✓ 100% compliance gap closure across all platforms</div>
+        <button class="toggle" onclick="toggleCard(this)" aria-expanded="false">Details <span class="tog-ico">▾</span></button>
+        <div class="pdetail"><div class="dgrid"><div class="dblock"><h5>Key Skills</h5><p>Compliance auditing, risk assessment, governance framework design, remediation planning.</p></div><div class="dblock"><h5>Reflection</h5><p>Systematic auditing builds a lasting culture of compliance within organizations.</p></div></div></div>
+      </article>
+      <article class="pcard">
+        <div class="phdr"><span class="pnum">04</span><span class="prole">Website Team Member</span></div>
+        <h3 class="ptitle">Website Redevelopment — Research Impact</h3>
+        <p class="pdesc">Coordinated API and AI model integrations at Research Impact, managing testing and debugging phases to deliver enhanced functionality on schedule and within all performance targets.</p>
+        <div class="ptags"><span class="ptag">API Integration</span><span class="ptag">AI Models</span><span class="ptag">QA Testing</span></div>
+        <div class="poutcome">✓ Delivered on schedule with all performance targets met</div>
+        <button class="toggle" onclick="toggleCard(this)" aria-expanded="false">Details <span class="tog-ico">▾</span></button>
+        <div class="pdetail"><div class="dgrid"><div class="dblock"><h5>Key Skills</h5><p>API coordination, AI oversight, QA testing, project timeline management, stakeholder communication.</p></div><div class="dblock"><h5>Reflection</h5><p>Strengthened my ability to bridge technical and business stakeholder communication.</p></div></div></div>
+      </article>
     </div>
+    <p class="coming">More projects coming soon — this portfolio is updated regularly.</p>
   </div>
 </section>
 
 <!-- SKILLS -->
-<section id="skills" class="section bg-l">
-  <div class="sec-inner">
-    <div class="sec-eyebrow"><span>Expertise</span></div>
-    <h2 class="sec-h">Skills &amp; <span>Achievements</span></h2>
-    <div class="skills-wrap">
-      <div>
-        <div class="skill-col">
-          <h3>Regulatory Compliance</h3>
-          <div class="skill-item"><span>GDPR</span><div class="skill-dot"></div></div>
-          <div class="skill-item"><span>HIPAA / PIPEDA</span><div class="skill-dot"></div></div>
-          <div class="skill-item"><span>AML / KYC</span><div class="skill-dot"></div></div>
-          <div class="skill-item"><span>ISO 27001</span><div class="skill-dot"></div></div>
-          <div class="skill-item"><span>SOX</span><div class="skill-dot"></div></div>
-          <div class="skill-item"><span>FCA Regulations</span><div class="skill-dot"></div></div>
-        </div>
-        <div class="skill-col" style="margin-top:32px;">
-          <h3>Risk Management</h3>
-          <div class="skill-item"><span>Risk Assessment</span><div class="skill-dot"></div></div>
-          <div class="skill-item"><span>Gap Analysis</span><div class="skill-dot"></div></div>
-          <div class="skill-item"><span>Internal Audits</span><div class="skill-dot"></div></div>
-          <div class="skill-item"><span>Controls Testing</span><div class="skill-dot"></div></div>
-        </div>
-      </div>
-      <div>
-        <div class="skill-col">
-          <h3>Cloud &amp; Security</h3>
-          <div class="skill-item"><span>GCP BAA / DLP</span><div class="skill-dot"></div></div>
-          <div class="skill-item"><span>AWS IAM</span><div class="skill-dot"></div></div>
-          <div class="skill-item"><span>Cloud Networking</span><div class="skill-dot"></div></div>
-          <div class="skill-item"><span>Cybersecurity</span><div class="skill-dot"></div></div>
-        </div>
-        <div class="skill-col" style="margin-top:32px;">
-          <h3>Project Management</h3>
-          <div class="skill-item"><span>Agile Methodologies</span><div class="skill-dot"></div></div>
-          <div class="skill-item"><span>Stakeholder Management</span><div class="skill-dot"></div></div>
-          <div class="skill-item"><span>Timeline Management</span><div class="skill-dot"></div></div>
-          <div class="skill-item"><span>Cross-functional Leadership</span><div class="skill-dot"></div></div>
-        </div>
-        <div class="skill-col" style="margin-top:32px;">
-          <h3>Tools &amp; Platforms</h3>
-          <div class="skill-item"><span>Microsoft Office Suite</span><div class="skill-dot"></div></div>
-          <div class="skill-item"><span>GRC Software</span><div class="skill-dot"></div></div>
-          <div class="skill-item"><span>HubSpot / Salesforce</span><div class="skill-dot"></div></div>
-          <div class="skill-item"><span>GitHub / HTML</span><div class="skill-dot"></div></div>
-        </div>
-      </div>
+<section id="skills">
+  <div class="container">
+    <span class="eyebrow">Expertise</span>
+    <h2 class="stitle">Skills &amp; Achievements</h2>
+    <div class="sgrid">
+      <div class="scat"><h3>Regulatory Compliance</h3><ul class="spills"><li class="spill">GDPR</li><li class="spill">HIPAA / PIPEDA</li><li class="spill">AML / KYC</li><li class="spill">ISO 27001</li><li class="spill">SOX</li><li class="spill">FCA Regulations</li></ul></div>
+      <div class="scat"><h3>Risk Management</h3><ul class="spills"><li class="spill">Risk Assessment</li><li class="spill">Gap Analysis</li><li class="spill">Internal Audits</li><li class="spill">Controls Testing</li></ul></div>
+      <div class="scat"><h3>Cloud &amp; Security</h3><ul class="spills"><li class="spill">GCP BAA / DLP</li><li class="spill">AWS IAM</li><li class="spill">Cloud Networking</li><li class="spill">Cybersecurity</li></ul></div>
+      <div class="scat"><h3>Project Management</h3><ul class="spills"><li class="spill">Agile Methodologies</li><li class="spill">Stakeholder Mgmt</li><li class="spill">Timeline Management</li><li class="spill">Cross-functional Leadership</li></ul></div>
+      <div class="scat"><h3>Tools &amp; Platforms</h3><ul class="spills"><li class="spill">Microsoft Office Suite</li><li class="spill">GRC Software</li><li class="spill">HubSpot / Salesforce</li><li class="spill">GitHub / HTML</li></ul></div>
     </div>
-    <div class="sec-eyebrow" style="margin-top:64px;"><span>Certifications</span></div>
-    <h2 class="sec-h" style="margin-top:8px;">Certifications &amp; <span>Milestones</span></h2>
-    <div class="certs-grid">
-      <div class="cert-card"><div class="cert-bar"></div><div><h4>Master's in Informatics &mdash; Cloud Computing &amp; Information Security</h4><p>Northeastern University &mdash; Mar 2026</p></div></div>
-      <div class="cert-card"><div class="cert-bar"></div><div><h4>Diploma in Digital Business Management</h4><p>Toronto School of Management</p></div></div>
-      <div class="cert-card"><div class="cert-bar"></div><div><h4>100% Audit Pass Rate</h4><p>Achieved consistently across all compliance audits conducted throughout career</p></div></div>
-      <div class="cert-card"><div class="cert-bar"></div><div><h4>HIPAA &amp; PIPEDA Compliance</h4><p>Hands-on implementation experience across multiple healthcare platforms</p></div></div>
+    <span class="eyebrow" style="display:inline-flex;margin-top:3rem">Certifications</span>
+    <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--forest);margin-bottom:1.25rem">Certifications &amp; Milestones</h3>
+    <div class="cgrid">
+      <div class="ccard"><h4>Master's in Informatics — Cloud &amp; InfoSec</h4><div class="cmeta">Northeastern University · Mar 2026</div></div>
+      <div class="ccard"><h4>Diploma in Digital Business Management</h4><div class="cmeta">Toronto School of Management</div></div>
+      <div class="ccard"><h4>100% Audit Pass Rate</h4><div class="cmeta">Achieved consistently across all compliance audits</div></div>
+      <div class="ccard"><h4>HIPAA &amp; PIPEDA Compliance</h4><div class="cmeta">Hands-on implementation across multiple healthcare platforms</div></div>
     </div>
   </div>
 </section>
 
 <!-- EVENTS -->
-<section id="events" class="section bg-w">
-  <div class="sec-inner">
-    <div class="sec-eyebrow"><span>Community &amp; Learning</span></div>
-    <h2 class="sec-h">Events &amp; <span>Community</span></h2>
-    <div class="ev-grid">
-      <div class="ev-card">
-        <div class="ev-img-wrap">
-          <img src="https://tosin-akinyemi.github.io/bigdata.jpeg" alt="Big Data Analytics Summit"
-            onerror="this.onerror=null;this.style.display='none';this.parentElement.innerHTML='<div class=\'ev-placeholder\'><span>Big Data &amp; Analytics Summit</span></div>'">
+<section id="events">
+  <div class="container">
+    <span class="eyebrow">Community &amp; Learning</span>
+    <h2 class="stitle">Events &amp; Community</h2>
+    <div class="egrid">
+      <article class="ecard">
+        <div class="eimg-wrap eimg-bg-forest">
+          <div class="eimg-bg eimg-bg-forest"><div class="eimg-label">Big Data &amp; Analytics Summit</div></div>
+          <img src="https://tosin-akinyemi.github.io/bigdata.jpeg" alt="Big Data Analytics Summit" loading="lazy" onerror="this.style.display='none'">
         </div>
-        <div class="ev-body">
-          <div class="ev-tag">Conference &mdash; Attendee</div>
-          <h3>11th Annual Big Data &amp; Analytics Summit Canada</h3>
-          <div class="ev-meta">Big Data &amp; Analytics Summit &mdash; Canada</div>
-          <p>A two-day summit exploring how AI, LLMs, and NLP are transforming data-driven decision-making. Key themes included data governance, automated compliance tools, and responsible AI adoption.</p>
+        <div class="ebody">
+          <span class="etype">Conference — Attendee</span>
+          <h3 class="etitle">11th Annual Big Data &amp; Analytics Summit Canada</h3>
+          <p class="edesc">A two-day summit exploring how AI, LLMs, and NLP are transforming data-driven decision-making. Key themes included data governance, automated compliance tools, and responsible AI adoption.</p>
         </div>
-      </div>
-      <div class="ev-card">
-        <div class="ev-placeholder"><span>Obsidi Community</span></div>
-        <div class="ev-body">
-          <div class="ev-tag">Community &mdash; Active Member</div>
-          <h3>Obsidi Community Event</h3>
-          <div class="ev-meta">Obsidi Community &mdash; Toronto, Ontario</div>
-          <p>Active member of the Obsidi professional community, attending local events focused on career development, knowledge sharing, and networking for Black professionals in technology and business.</p>
+      </article>
+      <article class="ecard">
+        <div class="eimg-wrap eimg-bg-gold">
+          <div class="eimg-bg eimg-bg-gold"><div class="eimg-label">Obsidi Community</div></div>
         </div>
-      </div>
+        <div class="ebody">
+          <span class="etype">Community — Active Member</span>
+          <h3 class="etitle">Obsidi Community Event</h3>
+          <p class="edesc">Active member of the Obsidi professional community, attending local events focused on career development, knowledge sharing, and networking for Black professionals in technology and business.</p>
+        </div>
+      </article>
     </div>
   </div>
 </section>
 
 <!-- BLOG -->
-<section id="blog" class="section bg-l">
-  <div class="sec-inner">
-    <div class="sec-eyebrow"><span>Thought Leadership</span></div>
-    <h2 class="sec-h">Insights &amp; <span>Endorsements</span></h2>
-    <div class="blog-layout">
-      <div class="blog-card">
-        <div class="blog-hero">
-          <h3>Insights from the 11th Annual Big Data &amp; Analytics Summit</h3>
-          <p>Published on LinkedIn</p>
-        </div>
-        <div class="blog-content">
-          <p>A reflection on how AI, LLMs, and NLP are reshaping data governance and decision-making across industries. The summit reinforced that effective data governance is the foundation for successful AI adoption — the question is no longer what data you have, but how well you govern it.</p>
-          <p>Key takeaways covered governance automation, data quality frameworks, and the practical steps organizations must take to govern AI responsibly and ethically.</p>
-          <a href="https://www.linkedin.com/in/estheroluakinyemi" target="_blank" class="blog-link">Read on LinkedIn &rarr;</a>
-        </div>
-      </div>
-      <div>
-        <div class="sec-eyebrow" style="margin-bottom:20px;"><span>Endorsements</span></div>
-        <div class="testi-stack">
-          <div class="testi-card"><p>I worked with Esther for over two years. I can easily describe her as prompt, responsive, thorough, organised, visionary, passionate, efficient, and perspective-taking. She adds significant value to any organisation she believes in.</p><div class="testi-author">Stephen Olateju</div></div>
-          <div class="testi-card"><p>Esther is an exceptional addition to any team — she goes all out. She is motivated, and once she commits, she makes sure she delivers. She has a positive competitive drive. I will gladly recommend her for any role.</p><div class="testi-author">Moyosore Majekobaje</div></div>
-        </div>
+<section id="blog">
+  <div class="container">
+    <span class="eyebrow">Thought Leadership</span>
+    <h2 class="stitle">Insights &amp; Endorsements</h2>
+    <div class="bcard">
+      <span class="bsrc">Published on LinkedIn</span>
+      <h3 class="btitle">Insights from the 11th Annual Big Data &amp; Analytics Summit</h3>
+      <p class="btext">A reflection on how AI, LLMs, and NLP are reshaping data governance and decision-making across industries. The summit reinforced that effective data governance is the foundation for successful AI adoption — the question is no longer what data you have, but how well you govern it.</p>
+      <p class="btext" style="font-size:.82rem;color:rgba(255,255,255,.4)">Key takeaways covered governance automation, data quality frameworks, and the practical steps organizations must take to govern AI responsibly and ethically.</p>
+      <a href="https://www.linkedin.com/in/estheroluakinyemi" target="_blank" rel="noopener" class="btn btn-gold" style="align-self:flex-start">Read on LinkedIn →</a>
+    </div>
+    <div class="endsec">
+      <h3 class="endtitle">Endorsements</h3>
+      <div class="egrid2">
+        <div class="endo"><blockquote>I worked with Esther for over two years. I can easily describe her as prompt, responsive, thorough, organised, visionary, passionate, efficient, and perspective-taking. She adds significant value to any organisation she believes in.</blockquote><cite>Stephen Olateju</cite></div>
+        <div class="endo"><blockquote>Esther is an exceptional addition to any team — she goes all out. She is motivated, and once she commits, she makes sure she delivers. She has a positive competitive drive. I will gladly recommend her for any role.</blockquote><cite>Moyosore Majekobaje</cite></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- RESUME -->
-<section id="resume" class="section bg-w">
-  <div class="sec-inner">
-    <div class="sec-eyebrow"><span>Curriculum Vitae</span></div>
-    <h2 class="sec-h">My <span>Resume</span></h2>
-    <div class="resume-container">
-      <div class="resume-dl"><a href="https://tosin-akinyemi.github.io/" target="_blank" class="btn-p" style="display:inline-block;">Download PDF Resume</a></div>
-      <div class="resume-card">
-        <div class="res-head">
-          <div class="res-name">Esther Akinyemi</div>
-          <p class="res-sub">Healthcare Compliance Specialist &middot; Project Coordinator &middot; Toronto, Ontario</p>
-          <div class="res-contacts">
-            <span>416-539-5696</span>
-            <span>estheroluwaabeni@gmail.com</span>
-            <a href="https://www.linkedin.com/in/estheroluakinyemi" target="_blank">LinkedIn</a>
-            <a href="https://github.com/tosin-akinyemi" target="_blank">GitHub</a>
-          </div>
+<section id="resume">
+  <div class="container">
+    <span class="eyebrow">Curriculum Vitae</span>
+    <h2 class="stitle">My Resume</h2>
+    <div class="rwrap">
+      <aside class="rside">
+        <div class="rcta">
+          <h3>Esther Akinyemi</h3>
+          <p>Healthcare Compliance Specialist · Project Coordinator · Toronto, Ontario</p>
+          <a href="https://tosin-akinyemi.github.io/" class="btn btn-gold" style="width:100%;justify-content:center" download>⬇ Download PDF Resume</a>
         </div>
-        <div class="res-summary"><p>Healthcare Compliance Specialist and Project Coordinator with 5+ years driving customer success across telecom, hospitality, and technology sectors, managing $5M+ ARR. Expert in HIPAA, PIPEDA, GCP compliance, stakeholder coordination, and on-budget delivery.</p></div>
-        <div class="res-cols">
-          <div class="res-left">
-            <div class="res-sec">
-              <div class="res-h">Education</div>
-              <div class="edu-i"><div class="d">Master's in Informatics &mdash; Cloud Computing &amp; Information Security</div><div class="s">Northeastern University</div><div class="y">Mar 2026</div></div>
-              <div class="edu-i"><div class="d">Diploma in Digital Business Management</div><div class="s">Toronto School of Management</div></div>
-              <div class="edu-i"><div class="d">Bachelor's in Sociology &amp; Anthropology</div></div>
-            </div>
-            <div class="res-sec">
-              <div class="res-h">Core Skills</div>
-              <span class="sp">Project Coordination</span><span class="sp">Agile</span><span class="sp">CRM Software</span><span class="sp">Microsoft Office</span><span class="sp">Cybersecurity</span><span class="sp">AWS IAM</span><span class="sp">Cloud Networking</span><span class="sp">GitHub</span><span class="sp">HIPAA/PIPEDA</span><span class="sp">GCP BAA/DLP</span>
-            </div>
-            <div class="res-sec">
-              <div class="res-h">Profiles</div>
-              <a href="https://www.linkedin.com/in/estheroluakinyemi" target="_blank" style="display:block;color:var(--teal);font-size:12px;margin-bottom:6px;">LinkedIn</a>
-              <a href="https://github.com/tosin-akinyemi" target="_blank" style="display:block;color:var(--teal);font-size:12px;">GitHub</a>
-            </div>
-          </div>
-          <div class="res-right">
-            <div class="res-h">Experience</div>
-            <div class="re"><div class="re-top"><div><div class="t">Website Team Member</div><div class="c">Research Impact</div></div><span class="d">Jul 2025 &ndash; Aug 2025</span></div><ul><li>Coordinated API and AI model integrations delivering enhanced website functionality on schedule.</li><li>Managed testing and debugging phases ensuring all milestones and performance targets were met.</li></ul></div>
-            <div class="re"><div class="re-top"><div><div class="t">Customer Success Manager</div><div class="c">Shaw Direct</div></div><span class="d">Mar 2023 &ndash; Apr 2024</span></div><ul><li>Achieved 50% CSAT increase, 30% retention boost, and 20% account growth.</li><li>Led cross-functional teams for first-contact resolution, managing stakeholder expectations.</li><li>Directed proactive communication strategies to maintain project deliverables.</li></ul></div>
-            <div class="re"><div class="re-top"><div><div class="t">Administrator</div><div class="c">Covenant Nation</div></div><span class="d">May 2024 &ndash; Jan 2025</span></div><ul><li>Managed client inquiries, travel arrangements, and administrative operations efficiently.</li><li>Collaborated across teams to develop strategies improving operational efficiency.</li></ul></div>
-            <div class="re"><div class="re-top"><div><div class="t">Technical Support Representative</div><div class="c">Digital Bananas Technology, Lagos</div></div><span class="d">Jan 2023 &ndash; Feb 2023</span></div><ul><li>Coordinated Ethernet infrastructure for multi-school cybersecurity competition.</li><li>Maintained network reliability under tight deadlines.</li></ul></div>
-            <div class="re"><div class="re-top"><div><div class="t">Customer Specialist</div><div class="c">Digital Bananas Technology, Lagos</div></div><span class="d">Mar 2018 &ndash; Jan 2022</span></div><ul><li>Oversaw $5M+ ARR portfolio with upselling campaigns and technical resolutions.</li><li>Managed concurrent stakeholder escalations with full solution follow-through.</li></ul></div>
-          </div>
+        <div class="rlinks">
+          <a href="tel:4165395696" class="rlink"><span class="rlbl">Phone</span>416-539-5696</a>
+          <a href="/cdn-cgi/l/email-protection#345147405c51465b584143555556515a5d745359555d581a575b59" class="rlink"><span class="rlbl">Email</span><span class="__cf_email__" data-cfemail="8feafcfbe7eafde0e3faf8eeeeedeae1e6cfe8e2eee6e3a1ece0e2">[email&#160;protected]</span></a>
+          <a href="https://www.linkedin.com/in/estheroluakinyemi" target="_blank" rel="noopener" class="rlink"><span class="rlbl">LinkedIn</span>estheroluakinyemi</a>
+          <a href="https://github.com/tosin-akinyemi" target="_blank" rel="noopener" class="rlink"><span class="rlbl">GitHub</span>tosin-akinyemi</a>
+        </div>
+      </aside>
+      <div class="rmain">
+        <div class="rsec">
+          <div class="rstitle">Summary</div>
+          <p style="font-size:.88rem;color:#334155;line-height:1.7">Healthcare Compliance Specialist and Project Coordinator with 5+ years driving customer success across telecom, hospitality, and technology sectors, managing $5M+ ARR. Expert in HIPAA, PIPEDA, GCP compliance, stakeholder coordination, and on-budget delivery.</p>
+        </div>
+        <div class="rsec">
+          <div class="rstitle">Education</div>
+          <div class="ritem"><div class="rihdr"><span class="rirole">Master's in Informatics — Cloud Computing &amp; InfoSec</span><span class="ridate">Mar 2026</span></div><div class="rico">Northeastern University</div></div>
+          <div class="ritem"><div class="rihdr"><span class="rirole">Diploma in Digital Business Management</span></div><div class="rico">Toronto School of Management</div></div>
+          <div class="ritem"><div class="rihdr"><span class="rirole">Bachelor's in Sociology &amp; Anthropology</span></div></div>
+        </div>
+        <div class="rsec">
+          <div class="rstitle">Core Skills</div>
+          <div class="skillrow"><span class="stag">Project Coordination</span><span class="stag">Agile</span><span class="stag">CRM Software</span><span class="stag">Microsoft Office</span><span class="stag">Cybersecurity</span><span class="stag">AWS IAM</span><span class="stag">Cloud Networking</span><span class="stag">GitHub</span><span class="stag">HIPAA/PIPEDA</span><span class="stag">GCP BAA/DLP</span></div>
+        </div>
+        <div class="rsec">
+          <div class="rstitle">Experience</div>
+          <div class="ritem"><div class="rihdr"><span class="rirole">Website Team Member</span><span class="ridate">Jul 2025 – Aug 2025</span></div><div class="rico">Research Impact</div><ul><li>Coordinated API and AI model integrations delivering enhanced website functionality on schedule.</li><li>Managed testing and debugging phases ensuring all milestones and performance targets were met.</li></ul></div>
+          <div class="ritem"><div class="rihdr"><span class="rirole">Customer Success Manager</span><span class="ridate">Mar 2023 – Apr 2024</span></div><div class="rico">Shaw Direct</div><ul><li>Achieved 50% CSAT increase, 30% retention boost, and 20% account growth.</li><li>Led cross-functional teams for first-contact resolution, managing stakeholder expectations.</li></ul></div>
+          <div class="ritem"><div class="rihdr"><span class="rirole">Administrator</span><span class="ridate">May 2024 – Jan 2025</span></div><div class="rico">Covenant Nation</div><ul><li>Managed client inquiries, travel arrangements, and administrative operations efficiently.</li><li>Collaborated across teams to develop strategies improving operational efficiency.</li></ul></div>
+          <div class="ritem"><div class="rihdr"><span class="rirole">Customer Specialist</span><span class="ridate">Mar 2018 – Jan 2022</span></div><div class="rico">Digital Bananas Technology, Lagos</div><ul><li>Oversaw $5M+ ARR portfolio with upselling campaigns and technical resolutions.</li><li>Managed concurrent stakeholder escalations with full solution follow-through.</li></ul></div>
         </div>
       </div>
     </div>
@@ -603,50 +527,46 @@ footer{background:#040d16;color:#2d3f52;text-align:center;padding:24px 48px;font
 
 <!-- CONTACT -->
 <section id="contact">
-  <div class="contact-grid">
-    <div class="contact-left">
-      <div class="sec-eyebrow" style="margin-bottom:12px;"><span style="color:var(--teal-xl);">Get In Touch</span></div>
-      <h2>Let's Work<br/><span>Together</span></h2>
-      <p>Open to healthcare compliance, project coordination, and networking opportunities. I welcome inquiries from employers, collaborators, and industry partners.</p>
-      <div class="contact-links">
-        <a href="mailto:estheroluwaabeni@gmail.com" class="contact-item"><div class="contact-item-bar"></div><div><div class="cl">Email</div><div class="cv">estheroluwaabeni@gmail.com</div></div></a>
-        <a href="tel:4165395696" class="contact-item"><div class="contact-item-bar"></div><div><div class="cl">Phone</div><div class="cv">416-539-5696</div></div></a>
-        <a href="https://www.linkedin.com/in/estheroluakinyemi" target="_blank" class="contact-item"><div class="contact-item-bar"></div><div><div class="cl">LinkedIn</div><div class="cv">linkedin.com/in/estheroluakinyemi</div></div></a>
-        <a href="https://github.com/tosin-akinyemi" target="_blank" class="contact-item"><div class="contact-item-bar"></div><div><div class="cl">GitHub</div><div class="cv">github.com/tosin-akinyemi</div></div></a>
-      </div>
+  <div class="container" style="position:relative;z-index:1">
+    <span class="eyebrow">Get In Touch</span>
+    <h2 class="stitle">Let's Work Together</h2>
+    <p style="color:rgba(255,255,255,.5);font-size:.9rem;max-width:480px;margin:0 auto 2.5rem;line-height:1.7">Open to healthcare compliance, project coordination, and networking opportunities.</p>
+    <div class="cgrid">
+      <a href="/cdn-cgi/l/email-protection#98fdebecf0fdeaf7f4edeff9f9fafdf6f1d8fff5f9f1f4b6fbf7f5" class="clink"><span class="cltype">Email</span><span class="clval"><span class="__cf_email__" data-cfemail="a9ccdaddc1ccdbc6c5dcdec8c8cbccc7c0e9cec4c8c0c587cac6c4">[email&#160;protected]</span></span></a>
+      <a href="tel:4165395696" class="clink"><span class="cltype">Phone</span><span class="clval">416-539-5696</span></a>
+      <a href="https://www.linkedin.com/in/estheroluakinyemi" target="_blank" rel="noopener" class="clink"><span class="cltype">LinkedIn</span><span class="clval">linkedin.com/in/estheroluakinyemi</span></a>
+      <a href="https://github.com/tosin-akinyemi" target="_blank" rel="noopener" class="clink"><span class="cltype">GitHub</span><span class="clval">github.com/tosin-akinyemi</span></a>
     </div>
-    <div class="contact-right">
-      <div class="contact-quote-bar"></div>
-      <p class="contact-quote">"Effective compliance is not a barrier — it is the foundation upon which great organisations are built."</p>
-      <div class="contact-quote-name">Esther Akinyemi</div>
+    <div class="cquote">
+      <blockquote>"Effective compliance is not a barrier — it is the foundation upon which great organisations are built."</blockquote>
+      <cite>— Esther Akinyemi</cite>
     </div>
   </div>
 </section>
 
-<footer>&copy; 2026 Esther Akinyemi &mdash; Healthcare Compliance Specialist &amp; Project Coordinator &mdash; Toronto, Ontario</footer>
+<footer>© 2026 Esther Akinyemi — Healthcare Compliance Specialist &amp; Project Coordinator — Toronto, Ontario</footer>
 
-<script>
-function goTo(id){
-  document.getElementById(id).scrollIntoView({behavior:'smooth'});
-  document.querySelectorAll('.nav-link').forEach(b=>b.classList.remove('active'));
-  document.querySelectorAll('.nav-link').forEach(b=>{
-    if(b.getAttribute('onclick')&&b.getAttribute('onclick').includes("'"+id+"'"))b.classList.add('active');
-  });
-}
-window.addEventListener('scroll',()=>{
-  const nav=document.getElementById('navbar');
-  nav.classList.toggle('scrolled',window.scrollY>60);
-  const ids=['home','about','experience','projects','skills','events','blog','resume','contact'];
-  let cur='home';
-  ids.forEach(id=>{
-    const el=document.getElementById(id);
-    if(el&&window.scrollY>=el.offsetTop-90)cur=id;
-  });
-  document.querySelectorAll('.nav-link').forEach(b=>b.classList.remove('active'));
-  document.querySelectorAll('.nav-link').forEach(b=>{
-    if(b.getAttribute('onclick')&&b.getAttribute('onclick').includes("'"+cur+"'"))b.classList.add('active');
-  });
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+const burger=document.getElementById('burger'),drawer=document.getElementById('drawer');
+burger.addEventListener('click',()=>{
+  const o=burger.classList.toggle('open');
+  drawer.classList.toggle('open',o);
+  burger.setAttribute('aria-expanded',o);
+  drawer.setAttribute('aria-hidden',!o);
+  document.body.style.overflow=o?'hidden':'';
 });
-</script>
-</body>
-</html>
+document.querySelectorAll('.dl').forEach(a=>a.addEventListener('click',()=>{
+  burger.classList.remove('open');drawer.classList.remove('open');
+  burger.setAttribute('aria-expanded','false');drawer.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+}));
+function toggleCard(btn){
+  const card=btn.closest('.pcard'),open=card.classList.toggle('open');
+  btn.setAttribute('aria-expanded',open);
+  btn.querySelector('.tog-ico').textContent=open?'▴':'▾';
+  btn.childNodes[0].textContent=open?'Hide ':'Details ';
+}
+const secs=document.querySelectorAll('section[id]'),links=document.querySelectorAll('.nav-links a');
+new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)links.forEach(a=>{a.style.color=a.getAttribute('href')==='#'+e.target.id?'var(--gold2)':''})});
+},{rootMargin:'-45% 0px -45% 0px'}).observe||secs.forEach(s=>new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)links.forE

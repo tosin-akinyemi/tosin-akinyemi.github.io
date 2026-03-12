@@ -32,7 +32,7 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;line-height:1.6}
-nav{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(26,46,31,0.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.08)}
+nav{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(13,27,42,0.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.08)}
 .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:62px;padding:0 clamp(1rem,4vw,2.5rem);gap:1rem}
 .nav-logo{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:#fff;text-decoration:none;white-space:nowrap;flex-shrink:0}
 .nav-logo span{color:var(--gold2)}
@@ -44,12 +44,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(26,46,31,0.9
 .burger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
 .burger.open span:nth-child(2){opacity:0}
 .burger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
-.drawer{display:none;position:fixed;top:62px;left:0;right:0;bottom:0;background:var(--forest);z-index:899;padding:2rem clamp(1.5rem,6vw,3rem);overflow-y:auto;transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1)}
-.drawer.open{transform:translateX(0)}
+.drawer{position:fixed;top:62px;left:0;right:0;bottom:0;background:var(--navy);z-index:899;padding:2rem clamp(1.5rem,6vw,3rem);overflow-y:auto;transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);visibility:hidden;pointer-events:none;}
+.drawer.open{transform:translateX(0);visibility:visible;pointer-events:all;}
 .drawer ul{list-style:none;display:flex;flex-direction:column}
 .drawer ul li a{display:block;padding:.9rem 0;font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:400;font-style:italic;color:rgba(255,255,255,.85);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.08);transition:color .2s,padding-left .2s}
 .drawer ul li a:hover{color:var(--gold2);padding-left:.4rem}
-@media(max-width:860px){.nav-links{display:none}.burger{display:flex}.drawer{display:block}}
+@media(min-width:861px){.burger{display:none!important}.drawer{display:none!important}}
+@media(max-width:860px){.nav-links{display:none}.burger{display:flex!important}}
 section{padding:clamp(4rem,8vw,7rem) clamp(1.25rem,5vw,3rem)}
 .container{max-width:1100px;margin:0 auto}
 .eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--sage);margin-bottom:.75rem}
@@ -546,27 +547,64 @@ footer{background:var(--dark);text-align:center;padding:1.1rem clamp(1rem,4vw,3r
 
 <footer>© 2026 Esther Akinyemi — Healthcare Compliance Specialist &amp; Project Coordinator — Toronto, Ontario</footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-const burger=document.getElementById('burger'),drawer=document.getElementById('drawer');
-burger.addEventListener('click',()=>{
-  const o=burger.classList.toggle('open');
-  drawer.classList.toggle('open',o);
-  burger.setAttribute('aria-expanded',o);
-  drawer.setAttribute('aria-hidden',!o);
-  document.body.style.overflow=o?'hidden':'';
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+  var burger = document.getElementById('burger');
+  var drawer = document.getElementById('drawer');
+
+  function openMenu() {
+    burger.classList.add('open');
+    drawer.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    burger.classList.remove('open');
+    drawer.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  if (burger) {
+    burger.addEventListener('click', function(e) {
+      e.stopPropagation();
+      drawer.classList.contains('open') ? closeMenu() : openMenu();
+    });
+  }
+
+  document.querySelectorAll('.dl').forEach(function(a) {
+    a.addEventListener('click', closeMenu);
+  });
+
+  document.addEventListener('click', function(e) {
+    if (drawer && drawer.classList.contains('open') && !drawer.contains(e.target) && !burger.contains(e.target)) {
+      closeMenu();
+    }
+  });
+
+  window.toggleCard = function(btn) {
+    var card = btn.closest('.pcard');
+    var open = card.classList.toggle('open');
+    btn.querySelector('.tog-ico').textContent = open ? '▴' : '▾';
+    btn.childNodes[0].textContent = open ? 'Hide ' : 'Details ';
+  };
+
+  var secs = document.querySelectorAll('section[id]');
+  var links = document.querySelectorAll('.nav-links a');
+  if ('IntersectionObserver' in window && secs.length) {
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          links.forEach(function(a) {
+            a.style.color = a.getAttribute('href') === '#' + e.target.id ? 'var(--gold2)' : '';
+          });
+        }
+      });
+    }, { rootMargin: '-45% 0px -45% 0px' });
+    secs.forEach(function(s) { io.observe(s); });
+  }
+
 });
-document.querySelectorAll('.dl').forEach(a=>a.addEventListener('click',()=>{
-  burger.classList.remove('open');drawer.classList.remove('open');
-  burger.setAttribute('aria-expanded','false');drawer.setAttribute('aria-hidden','true');
-  document.body.style.overflow='';
-}));
-function toggleCard(btn){
-  const card=btn.closest('.pcard'),open=card.classList.toggle('open');
-  btn.setAttribute('aria-expanded',open);
-  btn.querySelector('.tog-ico').textContent=open?'▴':'▾';
-  btn.childNodes[0].textContent=open?'Hide ':'Details ';
-}
-const secs=document.querySelectorAll('section[id]'),links=document.querySelectorAll('.nav-links a');
-new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting)links.forEach(a=>{a.style.color=a.getAttribute('href')==='#'+e.target.id?'var(--gold2)':''})});
-},{rootMargin:'-45% 0px -45% 0px'}).observe||secs.forEach(s=>new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)links.forE
+</script>
+</body>
+</html>

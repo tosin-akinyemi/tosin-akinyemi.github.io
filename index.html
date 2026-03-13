@@ -281,7 +281,7 @@ footer{background:var(--dark);text-align:center;padding:1.1rem clamp(1rem,4vw,3r
         </div>
         <div class="hero-btns">
           <a href="#projects" class="btn btn-gold">View My Work</a>
-          <a href="#resume" class="btn btn-outline">Download Resume</a>
+          <a href="https://tosin-akinyemi.github.io/esther-akinyemi-resume.pdf" target="_blank" class="btn btn-outline" download>Download Resume</a>
           <a href="#contact" class="btn btn-outline">Get In Touch</a>
         </div>
       </div>
@@ -371,17 +371,39 @@ footer{background:var(--dark);text-align:center;padding:1.1rem clamp(1rem,4vw,3r
     <span class="eyebrow">Project Samples</span>
     <h2 class="stitle">Featured Projects</h2>
     <div class="pgrid">
-      <article class="pcard">
-        <div class="phdr"><span class="pnum">01</span><span class="prole">Compliance Lead</span></div>
-        <h3 class="ptitle">Hinsight GCP Compliance</h3>
-        <p class="pdesc">Led GCP compliance for Hinsight's healthcare dashboards, implementing BAA agreements, IAM role separation, and audit logging to ensure full HIPAA and PIPEDA adherence.</p>
-        <div class="ptags"><span class="ptag">HIPAA</span><span class="ptag">PIPEDA</span><span class="ptag">GCP</span><span class="ptag">IAM</span><span class="ptag">Healthcare</span></div>
-        <div class="poutcome">✓ Full HIPAA &amp; PIPEDA compliance achieved across all dashboards</div>
+      <article class="pcard" style="border:2px solid var(--gold);grid-column:1/-1">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;margin-bottom:.5rem">
+          <div class="phdr" style="margin-bottom:0"><span class="pnum">01</span><span class="prole">Capstone Project — Team Lead &amp; Compliance Analyst</span></div>
+          <span style="background:var(--gold);color:var(--forest);font-size:.72rem;font-weight:700;padding:.3rem .8rem;border-radius:20px;letter-spacing:.05em;text-transform:uppercase">★ Major Highlight</span>
+        </div>
+        <h3 class="ptitle">Hinsight GCP HIPAA Compliance — Capstone Project, Nytia Labs</h3>
+        <p class="pdesc">Led the security and compliance stream for Hinsight, a healthcare analytics platform developed through Nytia Labs. Designed and implemented a full HIPAA and PIPEDA-compliant GCP architecture including BAA agreements, IAM role separation, audit logging, and DLP controls. Conducted an end-to-end compliance gap audit across all platform dashboards, developed detailed remediation roadmaps, and built governance frameworks that brought the platform to 100% regulatory compliance before launch.</p>
+        <div class="ptags"><span class="ptag">HIPAA</span><span class="ptag">PIPEDA</span><span class="ptag">GCP</span><span class="ptag">IAM</span><span class="ptag">BAA</span><span class="ptag">Audit</span><span class="ptag">Gap Analysis</span><span class="ptag">Governance</span><span class="ptag">Healthcare</span><span class="ptag">Capstone</span></div>
+        <div class="poutcome">✓ 100% HIPAA &amp; PIPEDA compliance achieved — full gap closure across all dashboards before platform launch</div>
         <button class="toggle" onclick="toggleCard(this)" aria-expanded="false">Details <span class="tog-ico">▾</span></button>
-        <div class="pdetail"><div class="dgrid"><div class="dblock"><h5>Key Skills</h5><p>Cloud compliance, BAA implementation, IAM design, audit logging, data governance.</p></div><div class="dblock"><h5>Reflection</h5><p>Reinforced that compliance enables confident decision-making rather than restricting it.</p></div></div></div>
+        <div class="pdetail">
+          <div class="dgrid">
+            <div class="dblock">
+              <h5>GCP Compliance Architecture</h5>
+              <p>Configured GCP Cloud SQL with encrypted connections, implemented IAM role separation ensuring least-privilege access for all team members, set up Cloud Monitoring audit trails, and executed BAA agreements with Google to meet HIPAA business associate requirements.</p>
+            </div>
+            <div class="dblock">
+              <h5>Compliance Gap Audit</h5>
+              <p>Conducted an end-to-end compliance audit across all Hinsight wellness platform dashboards. Identified gaps in data handling, access controls, and logging, then developed prioritised remediation roadmaps and governance frameworks aligned with HIPAA, PIPEDA, and GDPR standards.</p>
+            </div>
+            <div class="dblock">
+              <h5>Key Skills Demonstrated</h5>
+              <p>Cloud compliance architecture, BAA implementation, IAM design, audit logging, DLP configuration, risk assessment, governance framework design, compliance gap analysis, regulatory reporting, and cross-functional team leadership.</p>
+            </div>
+            <div class="dblock">
+              <h5>Reflection</h5>
+              <p>This capstone reinforced that compliance is not a checkbox — it is the foundation that enables an organization to operate confidently. Leading both the technical architecture and the audit process gave me a full view of how security, governance, and product delivery must be designed together from day one.</p>
+            </div>
+          </div>
+        </div>
       </article>
       <article class="pcard">
-        <div class="phdr"><span class="pnum">02</span><span class="prole">Project Coordinator</span></div>
+        <div class="phdr"><span class="pnum">03</span><span class="prole">Project Coordinator</span></div>
         <h3 class="ptitle">CRM Workflow Optimization</h3>
         <p class="pdesc">Optimized CRM workflows integrating HubSpot and Salesforce with Asana and Trello. Conducted cloud security audits across wellness platforms with actionable remediation plans.</p>
         <div class="ptags"><span class="ptag">HubSpot</span><span class="ptag">Salesforce</span><span class="ptag">Cloud Security</span><span class="ptag">Agile</span></div>
@@ -389,15 +411,7 @@ footer{background:var(--dark);text-align:center;padding:1.1rem clamp(1rem,4vw,3r
         <button class="toggle" onclick="toggleCard(this)" aria-expanded="false">Details <span class="tog-ico">▾</span></button>
         <div class="pdetail"><div class="dgrid"><div class="dblock"><h5>Key Skills</h5><p>CRM integration, workflow automation, security auditing, gap analysis, cross-functional coordination.</p></div><div class="dblock"><h5>Reflection</h5><p>Efficiency and compliance are complementary, not competing priorities.</p></div></div></div>
       </article>
-      <article class="pcard">
-        <div class="phdr"><span class="pnum">03</span><span class="prole">Capstone Project</span></div>
-        <h3 class="ptitle">Capstone Compliance Audit</h3>
-        <p class="pdesc">End-to-end compliance gap audit across multiple wellness platforms. Developed detailed remediation roadmaps and governance frameworks aligned with current regulatory standards.</p>
-        <div class="ptags"><span class="ptag">Audit</span><span class="ptag">Gap Analysis</span><span class="ptag">Governance</span><span class="ptag">Regulatory</span></div>
-        <div class="poutcome">✓ 100% compliance gap closure across all platforms</div>
-        <button class="toggle" onclick="toggleCard(this)" aria-expanded="false">Details <span class="tog-ico">▾</span></button>
-        <div class="pdetail"><div class="dgrid"><div class="dblock"><h5>Key Skills</h5><p>Compliance auditing, risk assessment, governance framework design, remediation planning.</p></div><div class="dblock"><h5>Reflection</h5><p>Systematic auditing builds a lasting culture of compliance within organizations.</p></div></div></div>
-      </article>
+
       <article class="pcard">
         <div class="phdr"><span class="pnum">04</span><span class="prole">Website Team Member</span></div>
         <h3 class="ptitle">Website Redevelopment — Research Impact Canada</h3>
@@ -461,7 +475,7 @@ footer{background:var(--dark);text-align:center;padding:1.1rem clamp(1rem,4vw,3r
         <button class="toggle" onclick="toggleCard(this)" aria-expanded="false">Details <span class="tog-ico">▾</span></button>
         <div class="pdetail">
           <div class="pimg-wrap" style="margin-bottom:1.25rem;border-radius:8px;overflow:hidden;border:1px solid var(--border)">
-            <img src="https://tosin-akinyemi.github.io/mvc-screenshot.png" alt="ASP.NET MVC Event Management App in Visual Studio" style="width:100%;display:block" onerror="this.parentElement.style.display='none'">
+            <img src="https://tosin-akinyemi.github.io/mvc-screenshot.png" alt="ASP.NET MVC Event Management App in Visual Studio" style="width:100%;display:block">
           </div>
           <div class="dgrid">
             <div class="dblock">
@@ -493,16 +507,16 @@ footer{background:var(--dark);text-align:center;padding:1.1rem clamp(1rem,4vw,3r
         <div class="pdetail">
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:1.25rem">
             <div style="border-radius:8px;overflow:hidden;border:1px solid var(--border)">
-              <img src="https://tosin-akinyemi.github.io/holiday-features.jpg" alt="Holiday Finder Key Features" style="width:100%;display:block" onerror="this.parentElement.style.display='none'">
+              <img src="https://tosin-akinyemi.github.io/holiday-features.jpg" alt="Holiday Finder Key Features" style="width:100%;display:block">
             </div>
             <div style="border-radius:8px;overflow:hidden;border:1px solid var(--border)">
-              <img src="https://tosin-akinyemi.github.io/holiday-frontend.jpg" alt="Holiday Finder Frontend Structure" style="width:100%;display:block" onerror="this.parentElement.style.display='none'">
+              <img src="https://tosin-akinyemi.github.io/holiday-frontend.jpg" alt="Holiday Finder Frontend Structure" style="width:100%;display:block">
             </div>
             <div style="border-radius:8px;overflow:hidden;border:1px solid var(--border)">
-              <img src="https://tosin-akinyemi.github.io/holiday-backend.jpg" alt="Holiday Finder Backend Structure" style="width:100%;display:block" onerror="this.parentElement.style.display='none'">
+              <img src="https://tosin-akinyemi.github.io/holiday-backend.jpg" alt="Holiday Finder Backend Structure" style="width:100%;display:block">
             </div>
             <div style="border-radius:8px;overflow:hidden;border:1px solid var(--border)">
-              <img src="https://tosin-akinyemi.github.io/holiday-lessons.png" alt="Holiday Finder Lessons Learned" style="width:100%;display:block" onerror="this.parentElement.style.display='none'">
+              <img src="https://tosin-akinyemi.github.io/holiday-lessons.png" alt="Holiday Finder Lessons Learned" style="width:100%;display:block">
             </div>
           </div>
           <div class="dgrid">
@@ -526,6 +540,49 @@ footer{background:var(--dark);text-align:center;padding:1.1rem clamp(1rem,4vw,3r
         </div>
       </article>
     </div>
+      <article class="pcard" style="border:2px solid var(--gold)">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;margin-bottom:.5rem">
+          <div class="phdr" style="margin-bottom:0"><span class="pnum">02</span><span class="prole">Security Analyst</span></div>
+          <span style="background:var(--gold);color:var(--forest);font-size:.72rem;font-weight:700;padding:.3rem .8rem;border-radius:20px;letter-spacing:.05em;text-transform:uppercase">★ Major Highlight</span>
+        </div>
+        <h3 class="ptitle">Security Analytics — Northeastern University</h3>
+        <p class="pdesc">A series of Security Analytics assignments at Northeastern University covering real-world cybersecurity threats, log analysis, and program design. Projects include a ransomware attack analysis on Habib Bank, a Cybersecurity Program report, an Azure Log Analytics lab using KQL queries, and the Keybrew Lockdown — a full cybersecurity defense proposal for a retail coffee chain.</p>
+        <div class="ptags"><span class="ptag">Security Analytics</span><span class="ptag">Ransomware</span><span class="ptag">Azure Log Analytics</span><span class="ptag">KQL</span><span class="ptag">NIST Framework</span><span class="ptag">Incident Response</span><span class="ptag">Cybersecurity Program</span></div>
+        <div class="poutcome">✓ Comprehensive threat analysis, log-based detection, and a $900K ROI cybersecurity proposal delivered</div>
+        <button class="toggle" onclick="toggleCard(this)" aria-expanded="false">Details <span class="tog-ico">▾</span></button>
+        <div class="pdetail">
+          <div style="margin-bottom:1.25rem">
+            <p style="font-size:.8rem;color:var(--muted);margin-bottom:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em">Keybrew Lockdown — All 7 Slides</p>
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.75rem">
+              <div style="border-radius:8px;overflow:hidden;border:1px solid var(--border)"><img src="https://tosin-akinyemi.github.io/keybrew-slide1.jpg" alt="Slide 1 — Keybrew Lockdown Title" style="width:100%;display:block"></div>
+              <div style="border-radius:8px;overflow:hidden;border:1px solid var(--border)"><img src="https://tosin-akinyemi.github.io/keybrew-slide2.jpg" alt="Slide 2 — The Wake-Up Call" style="width:100%;display:block"></div>
+              <div style="border-radius:8px;overflow:hidden;border:1px solid var(--border)"><img src="https://tosin-akinyemi.github.io/keybrew-slide3.jpg" alt="Slide 3 — Attack Timeline" style="width:100%;display:block"></div>
+              <div style="border-radius:8px;overflow:hidden;border:1px solid var(--border)"><img src="https://tosin-akinyemi.github.io/keybrew-slide4.jpg" alt="Slide 4 — NIST Defense Framework" style="width:100%;display:block"></div>
+              <div style="border-radius:8px;overflow:hidden;border:1px solid var(--border)"><img src="https://tosin-akinyemi.github.io/keybrew-slide5.jpg" alt="Slide 5 — $900K ROI" style="width:100%;display:block"></div>
+              <div style="border-radius:8px;overflow:hidden;border:1px solid var(--border)"><img src="https://tosin-akinyemi.github.io/keybrew-slide6.jpg" alt="Slide 6 — References" style="width:100%;display:block"></div>
+              <div style="border-radius:8px;overflow:hidden;border:1px solid var(--border)"><img src="https://tosin-akinyemi.github.io/keybrew-slide7.jpg" alt="Slide 7 — Thank You" style="width:100%;display:block"></div>
+            </div>
+          </div>
+          <div class="dgrid">
+            <div class="dblock">
+              <h5>Keybrew Lockdown — Cybersecurity Program</h5>
+              <p>Designed a full credential-attack defense program for a 20-store coffee chain facing $2.8M in losses from POS fraud. Mapped the NIST framework (Identify, Protect, Detect, Respond, Recover) to a $110K pilot with a projected $900K annual savings, covering fingerprint POS login, CrowdStrike threat detection, and 90-second lockdown protocols.</p>
+            </div>
+            <div class="dblock">
+              <h5>Security Attack Report — Habib Bank Ransomware</h5>
+              <p>Analysed a real-world ransomware attack on Habib Bank, tracing the full attack chain from phishing-based initial access through lateral movement, data exfiltration, and ransom demand. Produced remediation recommendations including MFA enforcement, network segmentation, patch management, and real-time anomaly monitoring.</p>
+            </div>
+            <div class="dblock">
+              <h5>Log Analytics — Azure Monitor &amp; KQL</h5>
+              <p>Used Azure Log Analytics with KQL (Kusto Query Language) to filter, summarise, and visualise log data. Queried the StormEvents dataset by state and severity level, grouped results using the summarize operator, and created bar charts and time-series visuals to surface security patterns and anomalies for compliance reporting.</p>
+            </div>
+            <div class="dblock">
+              <h5>Reflection</h5>
+              <p>These assignments connected classroom theory directly to real security incidents and tools. Analysing the Habib Bank breach showed how fast a single stolen credential can cascade into a multi-million dollar loss. The Keybrew project pushed me to think like a security consultant — balancing risk, budget, and operational realities to build a defensible program that a business would actually adopt.</p>
+            </div>
+          </div>
+        </div>
+      </article>
     <p class="coming">More projects coming soon — this portfolio is updated regularly.</p>
   </div>
 </section>
@@ -616,7 +673,7 @@ footer{background:var(--dark);text-align:center;padding:1.1rem clamp(1rem,4vw,3r
         <div class="rcta">
           <h3>Esther Akinyemi</h3>
           <p>Healthcare Compliance Specialist · Project Coordinator · Toronto, Ontario</p>
-          <a href="https://tosin-akinyemi.github.io/" class="btn btn-gold" style="width:100%;justify-content:center" download>⬇ Download PDF Resume</a>
+          <a href="https://tosin-akinyemi.github.io/esther-akinyemi-resume.pdf" target="_blank" class="btn btn-gold" style="width:100%;justify-content:center" download>⬇ Download PDF Resume</a>
         </div>
         <div class="rlinks">
           <a href="tel:4165395696" class="rlink"><span class="rlbl">Phone</span>416-539-5696</a>

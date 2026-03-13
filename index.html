@@ -7,47 +7,27 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
 :root {
-  --navy:    #0D1B2A;
-  --navy2:   #152236;
-  --blue:    #1B3A5C;
-  --mid:     #2E6DA4;
-  --sky:     #5B9BD5;
-  --pale:    #D6E8F7;
-  --cream:   #F4F7FA;
-  --white:   #FEFEFE;
-  --gold:    #B8892A;
-  --gold2:   #D4A94E;
-  --dark:    #060F1A;
-  --text:    #0D1B2A;
-  --muted:   #5C7080;
-  --border:  rgba(27,58,92,0.14);
-  --r: 8px;
-  /* aliases so existing CSS still works */
-  --forest:  var(--navy);
-  --forest2: var(--navy2);
-  --green:   var(--blue);
-  --sage:    var(--mid);
-  --mint:    var(--sky);
+  --navy:#0D1B2A;--navy2:#152236;--blue:#1B3A5C;--mid:#2E6DA4;--sky:#5B9BD5;--pale:#D6E8F7;--cream:#F4F7FA;--white:#FEFEFE;--gold:#B8892A;--gold2:#D4A94E;--dark:#060F1A;--text:#0D1B2A;--muted:#5C7080;--border:rgba(27,58,92,0.14);--r:8px;--forest:var(--navy);--forest2:var(--navy2);--green:var(--blue);--sage:var(--mid);--mint:var(--sky);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;line-height:1.6}
-nav{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(13,27,42,0.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.08)}
+nav{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(13,27,42,0.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.08)}
 .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:62px;padding:0 clamp(1rem,4vw,2.5rem);gap:1rem}
-.nav-logo{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:#fff;text-decoration:none;white-space:nowrap;flex-shrink:0}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:#fff;text-decoration:none;white-space:nowrap}
 .nav-logo span{color:var(--gold2)}
 .nav-links{display:flex;gap:clamp(.5rem,2vw,1.5rem);list-style:none;align-items:center}
-.nav-links a{font-size:.75rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.65);text-decoration:none;transition:color .2s;white-space:nowrap}
+.nav-links a{font-size:.75rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.65);text-decoration:none;transition:color .2s}
 .nav-links a:hover{color:var(--gold2)}
-.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;border:none;background:none;flex-shrink:0}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;border:none;background:none}
 .burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:all .3s}
 .burger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
 .burger.open span:nth-child(2){opacity:0}
 .burger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
-.drawer{position:fixed;top:62px;left:0;right:0;bottom:0;background:var(--navy);z-index:899;padding:2rem clamp(1.5rem,6vw,3rem);overflow-y:auto;transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);visibility:hidden;pointer-events:none;}
-.drawer.open{transform:translateX(0);visibility:visible;pointer-events:all;}
+.drawer{position:fixed;top:62px;left:0;right:0;bottom:0;background:var(--navy);z-index:899;padding:2rem clamp(1.5rem,6vw,3rem);overflow-y:auto;transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);visibility:hidden;pointer-events:none}
+.drawer.open{transform:translateX(0);visibility:visible;pointer-events:all}
 .drawer ul{list-style:none;display:flex;flex-direction:column}
-.drawer ul li a{display:block;padding:.9rem 0;font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:400;font-style:italic;color:rgba(255,255,255,.85);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.08);transition:color .2s,padding-left .2s}
+.drawer ul li a{display:block;padding:.9rem 0;font-family:'Playfair Display',serif;font-size:1.9rem;font-style:italic;color:rgba(255,255,255,.85);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.08);transition:color .2s,padding-left .2s}
 .drawer ul li a:hover{color:var(--gold2);padding-left:.4rem}
 @media(min-width:861px){.burger{display:none!important}.drawer{display:none!important}}
 @media(max-width:860px){.nav-links{display:none}.burger{display:flex!important}}
@@ -56,8 +36,7 @@ section{padding:clamp(4rem,8vw,7rem) clamp(1.25rem,5vw,3rem)}
 .eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--sage);margin-bottom:.75rem}
 .eyebrow::before{content:'';width:24px;height:1px;background:var(--mint)}
 h2.stitle{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3rem);font-weight:700;line-height:1.1;color:var(--forest);margin-bottom:2.5rem}
-/* HERO */
-#home{min-height:100svh;display:flex;align-items:center;background:var(--forest);padding-top:62px;position:relative;overflow:hidden}
+#home{min-height:100vh;display:flex;align-items:center;background:var(--forest);padding-top:62px;position:relative;overflow:hidden}
 .hero-bg{position:absolute;inset:0;pointer-events:none;overflow:hidden}
 .hero-bg::before{content:'';position:absolute;width:70vmax;height:70vmax;top:-20%;right:-25%;background:radial-gradient(circle,rgba(27,58,92,.6) 0%,transparent 65%);border-radius:50%}
 .hero-bg::after{content:'';position:absolute;width:40vmax;height:40vmax;bottom:-15%;left:-10%;background:radial-gradient(circle,rgba(184,137,42,.18) 0%,transparent 65%);border-radius:50%}
@@ -73,15 +52,14 @@ h1.hero-name em{font-style:italic;color:var(--gold2)}
 .hero-btns{display:flex;gap:.75rem;flex-wrap:wrap}
 .btn{display:inline-flex;align-items:center;gap:.4rem;padding:.7rem 1.5rem;font-size:.82rem;font-weight:600;letter-spacing:.04em;text-decoration:none;border-radius:4px;cursor:pointer;border:none;transition:all .2s;white-space:nowrap;font-family:'Inter',sans-serif}
 .btn-gold{background:var(--gold);color:#fff}
-.btn-gold:hover{background:var(--gold2);transform:translateY(-1px);box-shadow:0 6px 20px rgba(201,151,58,.3)}
+.btn-gold:hover{background:var(--gold2);transform:translateY(-1px)}
 .btn-outline{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.3)}
 .btn-outline:hover{border-color:var(--gold2);color:var(--gold2)}
-/* Portrait */
 .portrait-wrap{position:relative;flex-shrink:0}
 .portrait-box{width:clamp(200px,26vw,320px);aspect-ratio:3/4;border-radius:6px 80px 6px 6px;overflow:hidden;position:relative;border:3px solid rgba(201,151,58,.25)}
 .portrait-box img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;position:relative;z-index:2}
 .portrait-fallback{position:absolute;inset:0;background:linear-gradient(160deg,var(--navy2) 0%,var(--blue) 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;z-index:1}
-.portrait-initials{font-family:'Playfair Display',serif;font-size:4rem;font-weight:700;color:rgba(255,255,255,.25);letter-spacing:.1em}
+.portrait-initials{font-family:'Playfair Display',serif;font-size:4rem;font-weight:700;color:rgba(255,255,255,.25)}
 .portrait-fallback p{font-size:.78rem;color:rgba(255,255,255,.4);text-align:center;padding:0 1rem}
 .avail-badge{position:absolute;bottom:-14px;left:-12px;background:var(--navy);border:1px solid rgba(184,137,42,.3);border-radius:8px;padding:.6rem 1rem;font-size:.72rem;color:rgba(255,255,255,.8);display:flex;align-items:center;gap:.5rem;box-shadow:0 8px 24px rgba(0,0,0,.3);white-space:nowrap;z-index:10}
 .dot-pulse{width:8px;height:8px;background:#4ade80;border-radius:50%;flex-shrink:0;animation:pulse 2s infinite}
@@ -89,16 +67,7 @@ h1.hero-name em{font-style:italic;color:var(--gold2)}
 .scroll-hint{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.3rem;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3);animation:bob 2.5s ease-in-out infinite;text-decoration:none}
 .scroll-hint::after{content:'';width:1px;height:28px;background:rgba(184,137,42,.4)}
 @keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-5px)}}
-@media(max-width:700px){
-  .hero-grid{grid-template-columns:1fr;text-align:center}
-  .hero-stats{justify-content:center}
-  .hero-btns{justify-content:center}
-  .hero-sub{margin:0 auto 2rem}
-  .portrait-wrap{order:-1;display:flex;flex-direction:column;align-items:center;gap:1rem;margin-bottom:.5rem}
-  .portrait-box{width:min(200px,55vw)}
-  .avail-badge{position:static;transform:none;left:auto;bottom:auto;justify-content:center;font-size:.7rem;padding:.5rem .85rem}
-}
-/* ABOUT */
+@media(max-width:700px){.hero-grid{grid-template-columns:1fr;text-align:center}.hero-stats{justify-content:center}.hero-btns{justify-content:center}.hero-sub{margin:0 auto 2rem}.portrait-wrap{order:-1;display:flex;flex-direction:column;align-items:center;gap:1rem;margin-bottom:.5rem}.portrait-box{width:min(200px,55vw)}.avail-badge{position:static;transform:none;left:auto;bottom:auto;justify-content:center}}
 #about{background:var(--white)}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,5rem);align-items:start}
 .about-text p{font-size:.95rem;color:#2C3E50;line-height:1.8;margin-bottom:1.1rem}
@@ -107,7 +76,6 @@ h1.hero-name em{font-style:italic;color:var(--gold2)}
 .goal h4{font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
 .goal p{font-size:.875rem;color:#334155;line-height:1.6}
 @media(max-width:768px){.about-grid{grid-template-columns:1fr}}
-/* EXPERIENCE */
 #experience{background:var(--forest);color:#fff}
 #experience .eyebrow{color:var(--mint)}
 #experience h2.stitle{color:#fff}
@@ -121,7 +89,6 @@ h1.hero-name em{font-style:italic;color:var(--gold2)}
 .tdate{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:rgba(255,255,255,.4);letter-spacing:.06em;margin-left:auto}
 .titem ul{padding-left:1rem;margin-top:.5rem}
 .titem li{font-size:.86rem;color:rgba(255,255,255,.65);line-height:1.65;margin-bottom:.25rem}
-/* PROJECTS */
 #projects{background:var(--cream)}
 .pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,460px),1fr));gap:1.25rem}
 .pcard{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:clamp(1.25rem,3vw,1.75rem);display:flex;flex-direction:column;gap:.9rem;transition:box-shadow .25s,transform .25s;position:relative;overflow:hidden}
@@ -141,13 +108,11 @@ h1.hero-name em{font-style:italic;color:var(--gold2)}
 .dgrid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:.75rem}
 .dblock h5{font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem}
 .dblock p{font-size:.82rem;color:#334155;line-height:1.55}
-.toggle{background:none;border:none;cursor:pointer;font-size:.78rem;color:var(--sage);font-weight:600;padding:0;display:flex;align-items:center;gap:.3rem;font-family:'Inter',sans-serif;transition:opacity .2s}
-.toggle:hover{opacity:.7}
+.toggle{background:none;border:none;cursor:pointer;font-size:.78rem;color:var(--sage);font-weight:600;padding:0;display:flex;align-items:center;gap:.3rem;font-family:'Inter',sans-serif}
 .tog-ico{transition:transform .25s}
 .pcard.open .tog-ico{transform:rotate(180deg)}
 .coming{text-align:center;padding:1.25rem;margin-top:1.25rem;font-size:.84rem;color:var(--muted);font-style:italic;border:1px dashed var(--border);border-radius:6px}
 @media(max-width:480px){.dgrid{grid-template-columns:1fr}}
-/* SKILLS */
 #skills{background:var(--white)}
 .sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr));gap:1rem}
 .scat{background:var(--cream);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem 1.4rem}
@@ -160,21 +125,16 @@ h1.hero-name em{font-style:italic;color:var(--gold2)}
 .cmeta{font-size:.72rem;color:var(--mint);font-family:'JetBrains Mono',monospace}
 /* EVENTS */
 #events{background:var(--cream)}
-.egrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,400px),1fr));gap:1.5rem}
-.ecard{background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .2s,transform .2s}
+.ecard{background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;display:flex;transition:box-shadow .2s,transform .2s}
 .ecard:hover{box-shadow:0 8px 28px rgba(26,46,31,.1);transform:translateY(-2px)}
-.eimg-wrap{position:relative;aspect-ratio:14/3;overflow:hidden;flex-shrink:0}
-.eimg-wrap img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;position:relative;z-index:2}
-.ecard:hover .eimg-wrap img{transform:scale(1.04)}
-.eimg-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1}
-.eimg-bg-forest{background:linear-gradient(135deg,#0D1B2A 0%,#1B3A5C 100%)}
-.eimg-bg-gold{background:linear-gradient(135deg,#1a1208 0%,#4a3010 100%)}
-.eimg-label{font-family:'Playfair Display',serif;font-size:1.1rem;font-style:italic;color:rgba(255,255,255,.5);text-align:center;padding:1rem}
-.ebody{padding:1.25rem 1.5rem;flex:1}
+.eimg-side{width:45%;flex-shrink:0;overflow:hidden;min-height:260px}
+.eimg-side img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.ecard:hover .eimg-side img{transform:scale(1.04)}
+.ebody{padding:2rem;display:flex;flex-direction:column;justify-content:center;flex:1}
 .etype{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--sage);margin-bottom:.5rem;display:block}
 .etitle{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--forest);margin-bottom:.5rem;line-height:1.3}
 .edesc{font-size:.85rem;color:#334155;line-height:1.65}
-/* BLOG */
+@media(max-width:600px){.ecard{flex-direction:column}.eimg-side{width:100%;min-height:200px}}
 #blog{background:var(--forest)}
 #blog .eyebrow{color:var(--mint)}
 #blog h2.stitle{color:#fff}
@@ -189,7 +149,6 @@ h1.hero-name em{font-style:italic;color:var(--gold2)}
 .endo::before{content:'\201C';font-family:'Playfair Display',serif;font-size:4rem;color:rgba(201,151,58,.15);position:absolute;top:.1rem;left:.7rem;line-height:1}
 .endo blockquote{font-size:.875rem;color:rgba(255,255,255,.65);line-height:1.7;padding-top:1.25rem;font-style:italic}
 .endo cite{display:block;font-style:normal;font-size:.78rem;font-weight:600;color:var(--gold2);margin-top:.85rem;padding-top:.75rem;border-top:1px solid rgba(255,255,255,.1)}
-/* RESUME */
 #resume{background:var(--white)}
 .rwrap{display:grid;grid-template-columns:1fr 2fr;gap:clamp(2rem,5vw,4rem);align-items:start}
 .rcta{background:var(--forest);border-radius:12px;padding:1.75rem;text-align:center;margin-bottom:1.5rem;color:#fff}
@@ -197,7 +156,6 @@ h1.hero-name em{font-style:italic;color:var(--gold2)}
 .rcta p{font-size:.82rem;color:rgba(255,255,255,.55);margin-bottom:1.1rem;line-height:1.5}
 .rlinks{display:flex;flex-direction:column;gap:.1rem}
 .rlink{font-size:.82rem;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:.6rem;padding:.6rem 0;border-bottom:1px solid var(--border);transition:color .2s}
-.rlink:hover{color:var(--green)}
 .rlink:last-child{border-bottom:none}
 .rlbl{font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);min-width:58px;flex-shrink:0}
 .rsec{margin-bottom:2rem}
@@ -211,62 +169,40 @@ h1.hero-name em{font-style:italic;color:var(--gold2)}
 .ritem li{font-size:.83rem;color:#334155;line-height:1.6;margin-bottom:.2rem}
 .skillrow{display:flex;flex-wrap:wrap;gap:.35rem}
 .stag{font-size:.72rem;color:var(--green);background:var(--pale);border:1px solid rgba(74,124,89,.2);padding:.25em .65em;border-radius:3px;font-weight:500}
-@media(max-width:720px){.rwrap{grid-template-columns:1fr}.rside{order:1}.rmain{order:0}}
-/* CONTACT */
+@media(max-width:720px){.rwrap{grid-template-columns:1fr}}
 #contact{background:linear-gradient(160deg,var(--dark) 0%,var(--forest2) 100%);text-align:center;color:#fff;position:relative;overflow:hidden}
-#contact::before{content:'';position:absolute;width:60vmax;height:60vmax;top:-20%;right:-25%;background:radial-gradient(circle,rgba(184,137,42,.1) 0%,transparent 70%);border-radius:50%;pointer-events:none}
 #contact .eyebrow{color:var(--gold2)}
 #contact h2.stitle{color:#fff}
-.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,210px),1fr));gap:1rem;max-width:860px;margin:0 auto 3rem;position:relative}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,210px),1fr));gap:1rem;max-width:860px;margin:0 auto 3rem}
 .clink{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--r);padding:1.4rem;text-decoration:none;color:#fff;transition:background .2s,border-color .2s,transform .2s;display:flex;flex-direction:column;align-items:flex-start;gap:.4rem}
 .clink:hover{background:rgba(201,151,58,.15);border-color:var(--gold2);transform:translateY(-2px)}
 .cltype{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold2)}
 .clval{font-size:.875rem;font-weight:500;word-break:break-all;text-align:left}
-.cquote{max-width:580px;margin:0 auto;position:relative;z-index:1}
-.cquote blockquote{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(.95rem,2.2vw,1.2rem);font-weight:400;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:.6rem}
+.cquote{max-width:580px;margin:0 auto}
+.cquote blockquote{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(.95rem,2.2vw,1.2rem);color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:.6rem}
 .cquote cite{font-size:.75rem;color:var(--gold2);font-style:normal;letter-spacing:.06em}
 footer{background:var(--dark);text-align:center;padding:1.1rem clamp(1rem,4vw,3rem);border-top:1px solid rgba(255,255,255,.06);font-size:.72rem;color:rgba(255,255,255,.25)}
 </style>
 </head>
 <body>
-
 <nav>
   <div class="nav-inner">
     <a class="nav-logo" href="#home">Esther <span>Akinyemi</span></a>
     <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#events">Events</a></li>
-      <li><a href="#blog">Blog</a></li>
-      <li><a href="#resume">Resume</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#experience">Experience</a></li><li><a href="#projects">Projects</a></li><li><a href="#skills">Skills</a></li><li><a href="#events">Events</a></li><li><a href="#blog">Blog</a></li><li><a href="#resume">Resume</a></li><li><a href="#contact">Contact</a></li>
     </ul>
-    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="burger" id="burger"><span></span><span></span><span></span></button>
   </div>
 </nav>
-
-<div class="drawer" id="drawer" aria-hidden="true">
+<div class="drawer" id="drawer">
   <ul>
-    <li><a href="#home" class="dl">Home</a></li>
-    <li><a href="#about" class="dl">About</a></li>
-    <li><a href="#experience" class="dl">Experience</a></li>
-    <li><a href="#projects" class="dl">Projects</a></li>
-    <li><a href="#skills" class="dl">Skills</a></li>
-    <li><a href="#events" class="dl">Events</a></li>
-    <li><a href="#blog" class="dl">Blog</a></li>
-    <li><a href="#resume" class="dl">Resume</a></li>
-    <li><a href="#contact" class="dl">Contact</a></li>
+    <li><a href="#home" class="dl">Home</a></li><li><a href="#about" class="dl">About</a></li><li><a href="#experience" class="dl">Experience</a></li><li><a href="#projects" class="dl">Projects</a></li><li><a href="#skills" class="dl">Skills</a></li><li><a href="#events" class="dl">Events</a></li><li><a href="#blog" class="dl">Blog</a></li><li><a href="#resume" class="dl">Resume</a></li><li><a href="#contact" class="dl">Contact</a></li>
   </ul>
 </div>
 
 <!-- HERO -->
 <section id="home">
-  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-bg"></div>
   <div class="container">
     <div class="hero-grid">
       <div>
@@ -287,28 +223,14 @@ footer{background:var(--dark);text-align:center;padding:1.1rem clamp(1rem,4vw,3r
       </div>
       <div class="portrait-wrap">
         <div class="portrait-box">
-          <!-- Fallback shown immediately, hidden when image loads -->
-          <div class="portrait-fallback" id="pFallback">
-            <div class="portrait-initials">EA</div>
-            <p>Esther Akinyemi</p>
-          </div>
-          <img
-            id="heroImg"
-            src="https://tosin-akinyemi.github.io/portfolio.jpeg"
-            alt="Esther Akinyemi"
-            loading="eager"
-            crossorigin="anonymous"
-            style="opacity:0;transition:opacity .4s"
-            onload="this.style.opacity='1';document.getElementById('pFallback').style.display='none'"
-            onerror="this.style.display='none'">
+          <div class="portrait-fallback" id="pFallback"><div class="portrait-initials">EA</div><p>Esther Akinyemi</p></div>
+          <img id="heroImg" src="https://tosin-akinyemi.github.io/portfolio.jpeg" alt="Esther Akinyemi" loading="eager" style="opacity:0;transition:opacity .4s" onload="this.style.opacity='1';document.getElementById('pFallback').style.display='none'" onerror="this.style.display='none'">
         </div>
-        <div class="avail-badge">
-          <span class="dot-pulse"></span>Open to Opportunities · Toronto, ON
-        </div>
+        <div class="avail-badge"><span class="dot-pulse"></span>Open to Opportunities · Toronto, ON</div>
       </div>
     </div>
   </div>
-  <a href="#about" class="scroll-hint" aria-label="Scroll down">Scroll</a>
+  <a href="#about" class="scroll-hint">Scroll</a>
 </section>
 
 <!-- ABOUT -->
@@ -324,11 +246,11 @@ footer{background:var(--dark);text-align:center;padding:1.1rem clamp(1rem,4vw,3r
       </div>
       <div>
         <span class="eyebrow">Career Goals</span>
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--forest);margin-bottom:1.25rem;">Where I'm Headed</h3>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--forest);margin-bottom:1.25rem">Where I'm Headed</h3>
         <div class="goals">
-          <div class="goal"><h4>Short-Term Goal</h4><p>Secure a Healthcare Compliance or Project Coordinator role where I can apply HIPAA, PIPEDA, and GCP compliance expertise to drive organizational security and patient data protection.</p></div>
-          <div class="goal"><h4>Long-Term Vision</h4><p>Lead compliance and data governance strategy at an enterprise level, championing ethical AI adoption and robust security frameworks across the healthcare industry.</p></div>
-          <div class="goal"><h4>Continuous Learning</h4><p>Actively expanding knowledge in AI security, LLMs, and data governance through industry events, certifications, and professional community engagement.</p></div>
+          <div class="goal"><h4>Short-Term Goal</h4><p>Secure a Healthcare Compliance or Project Coordinator role where I can apply HIPAA, PIPEDA, and GCP compliance expertise.</p></div>
+          <div class="goal"><h4>Long-Term Vision</h4><p>Lead compliance and data governance strategy at an enterprise level, championing ethical AI adoption.</p></div>
+          <div class="goal"><h4>Continuous Learning</h4><p>Actively expanding knowledge in AI security, LLMs, and data governance through industry events and certifications.</p></div>
         </div>
       </div>
     </div>
@@ -341,301 +263,10 @@ footer{background:var(--dark);text-align:center;padding:1.1rem clamp(1rem,4vw,3r
     <span class="eyebrow">Career History</span>
     <h2 class="stitle">Work Experience</h2>
     <div class="timeline">
-      <div class="titem">
-        <div class="tmeta"><span class="trole">Website Team Member</span><span class="tco">Research Impact</span><span class="tdate">Jul 2025 – Aug 2025</span></div>
-        <ul><li>Coordinated with designers and developers to integrate APIs and AI models, delivering enhanced website functionality on schedule.</li><li>Managed testing and debugging phases, ensuring project milestones and performance targets were met.</li></ul>
-      </div>
-      <div class="titem">
-        <div class="tmeta"><span class="trole">Administrator</span><span class="tco">Covenant Nation</span><span class="tdate">May 2024 – Jan 2025</span></div>
-        <ul><li>Responded to client inquiries via phone and email, addressing questions, complaints, and needs.</li><li>Planned and coordinated travel arrangements and administrative tasks.</li><li>Collaborated across teams to develop strategies for improving operational efficiency.</li></ul>
-      </div>
-      <div class="titem">
-        <div class="tmeta"><span class="trole">Customer Success Manager</span><span class="tco">Shaw Direct</span><span class="tdate">Mar 2023 – Apr 2024</span></div>
-        <ul><li>Coordinated customer lifecycle projects achieving 50% CSAT increase, 30% retention boost, and 20% account growth.</li><li>Led cross-functional teams to resolve issues first-contact, managing stakeholder expectations and timelines.</li><li>Directed proactive communication strategies to maintain project deliverables.</li></ul>
-      </div>
-      <div class="titem">
-        <div class="tmeta"><span class="trole">Technical Support Representative</span><span class="tco">Digital Bananas Technology, Lagos</span><span class="tdate">Jan 2023 – Feb 2023</span></div>
-        <ul><li>Coordinated Ethernet infrastructure for multi-school cybersecurity competition, ensuring event readiness.</li><li>Maintained network reliability under tight deadlines with technical teams.</li></ul>
-      </div>
-      <div class="titem">
-        <div class="tmeta"><span class="trole">Customer Specialist</span><span class="tco">Digital Bananas Technology, Lagos</span><span class="tdate">Mar 2018 – Jan 2022</span></div>
-        <ul><li>Oversaw $5M+ ARR portfolio, coordinating upselling campaigns and technical resolutions across multiple customer projects.</li><li>Managed concurrent tasks and stakeholder escalations with full solution follow-through.</li></ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="container">
-    <span class="eyebrow">Project Samples</span>
-    <h2 class="stitle">Featured Projects</h2>
-    <div class="pgrid">
-      <article class="pcard" style="border:2px solid var(--gold);grid-column:1/-1">
-        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;margin-bottom:.5rem">
-          <div class="phdr" style="margin-bottom:0"><span class="pnum">01</span><span class="prole">Capstone Project — Team Lead &amp; Compliance Analyst</span></div>
-          <span style="background:var(--gold);color:var(--forest);font-size:.72rem;font-weight:700;padding:.3rem .8rem;border-radius:20px;letter-spacing:.05em;text-transform:uppercase">★ Major Highlight</span>
-        </div>
-        <h3 class="ptitle">Hinsight GCP HIPAA Compliance — Capstone Project, Nytia Labs</h3>
-        <p class="pdesc">Led the security and compliance stream for Hinsight, a healthcare analytics platform developed through Nytia Labs. Designed and implemented a full HIPAA and PIPEDA-compliant GCP architecture including BAA agreements, IAM role separation, audit logging, and DLP controls. Conducted an end-to-end compliance gap audit across all platform dashboards, developed detailed remediation roadmaps, and built governance frameworks that brought the platform to 100% regulatory compliance before launch.</p>
-        <div class="ptags"><span class="ptag">HIPAA</span><span class="ptag">PIPEDA</span><span class="ptag">GCP</span><span class="ptag">IAM</span><span class="ptag">BAA</span><span class="ptag">Audit</span><span class="ptag">Gap Analysis</span><span class="ptag">Governance</span><span class="ptag">Healthcare</span><span class="ptag">Capstone</span></div>
-        <div class="poutcome">✓ 100% HIPAA &amp; PIPEDA compliance achieved — full gap closure across all dashboards before platform launch</div>
-        <button class="toggle" onclick="toggleCard(this)" aria-expanded="false">Details <span class="tog-ico">▾</span></button>
-        <div class="pdetail">
-          <div class="dgrid">
-            <div class="dblock">
-              <h5>GCP Compliance Architecture</h5>
-              <p>Configured GCP Cloud SQL with encrypted connections, implemented IAM role separation ensuring least-privilege access for all team members, set up Cloud Monitoring audit trails, and executed BAA agreements with Google to meet HIPAA business associate requirements.</p>
-            </div>
-            <div class="dblock">
-              <h5>Compliance Gap Audit</h5>
-              <p>Conducted an end-to-end compliance audit across all Hinsight wellness platform dashboards. Identified gaps in data handling, access controls, and logging, then developed prioritised remediation roadmaps and governance frameworks aligned with HIPAA, PIPEDA, and GDPR standards.</p>
-            </div>
-            <div class="dblock">
-              <h5>Key Skills Demonstrated</h5>
-              <p>Cloud compliance architecture, BAA implementation, IAM design, audit logging, DLP configuration, risk assessment, governance framework design, compliance gap analysis, regulatory reporting, and cross-functional team leadership.</p>
-            </div>
-            <div class="dblock">
-              <h5>Reflection</h5>
-              <p>This capstone reinforced that compliance is not a checkbox — it is the foundation that enables an organization to operate confidently. Leading both the technical architecture and the audit process gave me a full view of how security, governance, and product delivery must be designed together from day one.</p>
-            </div>
-          </div>
-        </div>
-      </article>
-      <article class="pcard">
-        <div class="phdr"><span class="pnum">03</span><span class="prole">Project Coordinator</span></div>
-        <h3 class="ptitle">CRM Workflow Optimization</h3>
-        <p class="pdesc">Optimized CRM workflows integrating HubSpot and Salesforce with Asana and Trello. Conducted cloud security audits across wellness platforms with actionable remediation plans.</p>
-        <div class="ptags"><span class="ptag">HubSpot</span><span class="ptag">Salesforce</span><span class="ptag">Cloud Security</span><span class="ptag">Agile</span></div>
-        <div class="poutcome">✓ 30% increase in client pipeline efficiency</div>
-        <button class="toggle" onclick="toggleCard(this)" aria-expanded="false">Details <span class="tog-ico">▾</span></button>
-        <div class="pdetail"><div class="dgrid"><div class="dblock"><h5>Key Skills</h5><p>CRM integration, workflow automation, security auditing, gap analysis, cross-functional coordination.</p></div><div class="dblock"><h5>Reflection</h5><p>Efficiency and compliance are complementary, not competing priorities.</p></div></div></div>
-      </article>
-
-      <article class="pcard">
-        <div class="phdr"><span class="pnum">04</span><span class="prole">Website Team Member</span></div>
-        <h3 class="ptitle">Website Redevelopment — Research Impact Canada</h3>
-        <p class="pdesc">Collaborated with designers and developers to integrate third-party APIs and AI models, delivering enhanced website functionality on schedule. Managed testing and debugging phases and contributed to Agile sprint planning and peer code reviews.</p>
-        <div class="ptags"><span class="ptag">API Integration</span><span class="ptag">AI Models</span><span class="ptag">QA Testing</span><span class="ptag">Agile</span></div>
-        <div class="poutcome">✓ Delivered on schedule with all performance targets met</div>
-        <button class="toggle" onclick="toggleCard(this)" aria-expanded="false">Details <span class="tog-ico">▾</span></button>
-        <div class="pdetail"><div class="dgrid"><div class="dblock"><h5>Key Skills</h5><p>API coordination, AI model integration, QA testing, Agile methodology, stakeholder communication.</p></div><div class="dblock"><h5>Reflection</h5><p>Strengthened my ability to bridge technical and business stakeholder communication in a fast-paced environment.</p></div></div></div>
-      </article>
-      <article class="pcard">
-        <div class="phdr"><span class="pnum">05</span><span class="prole">Project Manager &amp; Developer</span></div>
-        <h3 class="ptitle">AI Identity Model — LLM Origin Classifier</h3>
-        <p class="pdesc">Led a 6-person team to design and deliver an ML-powered system that classifies text by its originating large language model (OpenAI, Gemini, Mistral, Claude). Built with a React frontend, FastAPI backend, and SQLite database, deployed on GoDaddy via Google Cloud.</p>
-        <div class="ptags"><span class="ptag">React</span><span class="ptag">FastAPI</span><span class="ptag">Python</span><span class="ptag">Machine Learning</span><span class="ptag">GCP</span><span class="ptag">GitHub</span></div>
-        <div class="poutcome">✓ Delivered on time with live deployment at ai-model-identity.space</div>
-        <button class="toggle" onclick="toggleCard(this)" aria-expanded="false">Details <span class="tog-ico">▾</span></button>
-        <div class="pdetail"><div class="dgrid"><div class="dblock"><h5>Key Skills</h5><p>Team leadership, ML classification, React/FastAPI full-stack development, GitHub collaboration, GCP deployment.</p></div><div class="dblock"><h5>Reflection</h5><p>Managing a multidisciplinary team deepened my appreciation for clear communication and structured project workflows.</p></div></div></div>
-      </article>
-      <article class="pcard">
-        <div class="phdr"><span class="pnum">06</span><span class="prole">Cloud Security Analyst</span></div>
-        <h3 class="ptitle">AWS IAM Lab — Cloud Security</h3>
-        <p class="pdesc">Configured AWS Identity and Access Management (IAM) users, roles, and groups to secure EC2 instances and S3 buckets. Tested authentication flows and demonstrated the principle of least privilege for compliance-ready cloud environments.</p>
-        <div class="ptags"><span class="ptag">AWS IAM</span><span class="ptag">EC2</span><span class="ptag">S3</span><span class="ptag">Cloud Security</span><span class="ptag">Least Privilege</span></div>
-        <div class="poutcome">✓ Fully secured environment demonstrating compliance-ready IAM architecture</div>
-        <button class="toggle" onclick="toggleCard(this)" aria-expanded="false">Details <span class="tog-ico">▾</span></button>
-        <div class="pdetail"><div class="dgrid"><div class="dblock"><h5>Key Skills</h5><p>AWS IAM, role-based access control, cloud security, authentication testing, compliance architecture.</p></div><div class="dblock"><h5>Reflection</h5><p>In this lab I managed user access by assigning user-1 to S3-Support, user-2 to EC2-Support, and user-3 to EC2-Admin, then verified each login and confirmed that group permissions correctly controlled what actions each user could take — including the ability to stop EC2 instances. It reinforced how IAM groups make access management more secure and scalable by assigning permissions based on roles rather than managing each user individually.</p></div></div></div>
-      </article>
-      <article class="pcard">
-        <div class="phdr"><span class="pnum">07</span><span class="prole">Data Analyst</span></div>
-        <h3 class="ptitle">Cloud Data Analysis — Google BigQuery &amp; Cloud SQL</h3>
-        <p class="pdesc">Executed complex SQL queries across GCP datasets using SELECT, GROUP BY, UNION, and INSERT/DELETE operations. Managed complete data pipelines from CSV export through Cloud Storage to Cloud SQL table imports, supporting compliance reporting and analytics workflows.</p>
-        <div class="ptags"><span class="ptag">BigQuery</span><span class="ptag">Cloud SQL</span><span class="ptag">SQL</span><span class="ptag">GCP</span><span class="ptag">Data Pipelines</span></div>
-        <div class="poutcome">✓ End-to-end data pipelines built supporting compliance reporting workflows</div>
-        <button class="toggle" onclick="toggleCard(this)" aria-expanded="false">Details <span class="tog-ico">▾</span></button>
-        <div class="pdetail"><div class="dgrid"><div class="dblock"><h5>Key Skills</h5><p>SQL querying, GCP data pipeline management, Cloud Storage, BigQuery, compliance analytics.</p></div><div class="dblock"><h5>Reflection</h5><p>Working with cloud-native data tools reinforced how data governance and compliance reporting are deeply interconnected.</p></div></div></div>
-      </article>
-      <article class="pcard">
-        <div class="phdr"><span class="pnum">08</span><span class="prole">WordPress Designer</span></div>
-        <h3 class="ptitle">Happy Nutrition Canada — Website Redesign</h3>
-        <p class="pdesc">Designed and maintained the company website using WordPress and Elementor, creating responsive layouts aligned with brand guidelines. Optimised pages for usability, accessibility, and performance, improving the overall mobile user experience.</p>
-        <div class="ptags"><span class="ptag">WordPress</span><span class="ptag">Elementor</span><span class="ptag">Responsive Design</span><span class="ptag">UX</span><span class="ptag">Performance</span></div>
-        <div class="poutcome">✓ Improved mobile UX and page load performance across all key pages</div>
-        <button class="toggle" onclick="toggleCard(this)" aria-expanded="false">Details <span class="tog-ico">▾</span></button>
-        <div class="pdetail"><div class="dgrid"><div class="dblock"><h5>Key Skills</h5><p>WordPress, Elementor, responsive web design, UX optimisation, brand alignment.</p></div><div class="dblock"><h5>Reflection</h5><p>Designing for a wellness brand highlighted how visual clarity and accessibility directly impact user trust.</p></div></div></div>
-      </article>
-      <article class="pcard">
-        <div class="phdr"><span class="pnum">09</span><span class="prole">Technical Support</span></div>
-        <h3 class="ptitle">Cybersecurity Competition — Network Infrastructure</h3>
-        <p class="pdesc">Coordinated Ethernet network infrastructure for a multi-school cybersecurity competition hosted through Toronto School of Management. Collaborated with technical teams to ensure full event readiness and network reliability under tight deadlines.</p>
-        <div class="ptags"><span class="ptag">Networking</span><span class="ptag">Cybersecurity</span><span class="ptag">Ethernet</span><span class="ptag">Event Coordination</span></div>
-        <div class="poutcome">✓ Competition ran without network issues — full event readiness achieved</div>
-        <button class="toggle" onclick="toggleCard(this)" aria-expanded="false">Details <span class="tog-ico">▾</span></button>
-        <div class="pdetail"><div class="dgrid"><div class="dblock"><h5>Key Skills</h5><p>Network infrastructure setup, cybersecurity event support, team coordination, deadline management.</p></div><div class="dblock"><h5>Reflection</h5><p>Supporting a live competition under pressure reinforced the importance of preparation and real-time problem solving.</p></div></div></div>
-      </article>
-      <article class="pcard">
-        <div class="phdr"><span class="pnum">10</span><span class="prole">Full-Stack Developer</span></div>
-        <h3 class="ptitle">Web Development Using MVC Architecture</h3>
-        <p class="pdesc">Two interconnected projects demonstrating full-stack web development using MVC principles: an ASP.NET Core Event Management app with a complete Controller/Model/View/Service architecture, and a fully responsive 4-page TechFuture 2025 Conference Website built in pure HTML5 &amp; CSS3 — no frameworks, no JavaScript dependencies.</p>
-        <div class="ptags"><span class="ptag">ASP.NET Core</span><span class="ptag">MVC Architecture</span><span class="ptag">C#</span><span class="ptag">HTML5</span><span class="ptag">CSS3</span><span class="ptag">Responsive Design</span><span class="ptag">Accessibility</span><span class="ptag">Entity Framework</span></div>
-        <div class="poutcome">✓ Clean MVC app with no build errors + fully responsive 4-page conference site with print stylesheet and WCAG accessibility</div>
-        <button class="toggle" onclick="toggleCard(this)" aria-expanded="false">Details <span class="tog-ico">▾</span></button>
-        <div class="pdetail">
-          <div class="pimg-wrap" style="margin-bottom:1.25rem;border-radius:8px;overflow:hidden;border:1px solid var(--border)">
-            <img src="https://tosin-akinyemi.github.io/mvc-screenshot.png" alt="ASP.NET MVC Event Management App in Visual Studio" style="width:100%;display:block;min-height:80px;background:#1a2a3a">
-          </div>
-          <div class="dgrid">
-            <div class="dblock">
-              <h5>Event Management App (ASP.NET MVC)</h5>
-              <p>Built with ASP.NET Core using the full MVC pattern — Controllers, Models, Views, and a dedicated Service layer. Used Entity Framework with ApplicationDbContext for data management and Visual Studio for development.</p>
-            </div>
-            <div class="dblock">
-              <h5>TechFuture 2025 Conference Website</h5>
-              <p>4-page responsive site (Home, Schedule, Registration, Contact) built in pure HTML5 &amp; CSS3. Features a 3-day conference schedule with rowspan/colspan tables, multi-track sessions, registration form with HTML5 validation, and a print stylesheet for clean monochrome output.</p>
-            </div>
-            <div class="dblock">
-              <h5>Design &amp; Accessibility Decisions</h5>
-              <p>Used CSS Grid and Flexbox for all layouts with deliberate breakpoints at 768px and 480px. Colour scheme uses purple/pink gradients with sufficient contrast ratios. All form inputs have associated labels, all interactive elements are keyboard accessible, and tab order follows a logical natural flow.</p>
-            </div>
-            <div class="dblock">
-              <h5>Reflection</h5>
-              <p>These projects reinforced that clean separation of concerns — whether in MVC architecture or HTML/CSS component design — is what makes code maintainable, accessible, and scalable. Building without frameworks sharpened my understanding of how the web actually works at its foundation.</p>
-            </div>
-          </div>
-        </div>
-      </article>
-      <article class="pcard">
-        <div class="phdr"><span class="pnum">11</span><span class="prole">Project Manager</span></div>
-        <h3 class="ptitle">Holiday Finder — AI-Powered Travel Web App</h3>
-        <p class="pdesc">Led a 4-person team to design and build a full-stack AI-powered holiday discovery web application. The app delivers personalized destination recommendations based on user preferences, integrating a recommendation engine, GDPR-compliant chat history, BCrypt password security, and CDN-linked profile image storage.</p>
-        <div class="ptags"><span class="ptag">Project Management</span><span class="ptag">AI Integration</span><span class="ptag">Full-Stack</span><span class="ptag">GDPR Compliance</span><span class="ptag">BCrypt</span><span class="ptag">Database Design</span></div>
-        <div class="poutcome">✓ Delivered a fully functional AI travel app with compliance-ready architecture and personalized user experience</div>
-        <button class="toggle" onclick="toggleCard(this)" aria-expanded="false">Details <span class="tog-ico">▾</span></button>
-        <div class="pdetail">
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:1.25rem">
-            <div style="border-radius:8px;overflow:hidden;border:1px solid var(--border)">
-              <img src="https://tosin-akinyemi.github.io/holiday-features.jpg" alt="Holiday Finder Key Features" style="width:100%;display:block;min-height:80px;background:#1a2a3a">
-            </div>
-            <div style="border-radius:8px;overflow:hidden;border:1px solid var(--border)">
-              <img src="https://tosin-akinyemi.github.io/holiday-frontend.jpg" alt="Holiday Finder Frontend Structure" style="width:100%;display:block;min-height:80px;background:#1a2a3a">
-            </div>
-            <div style="border-radius:8px;overflow:hidden;border:1px solid var(--border)">
-              <img src="https://tosin-akinyemi.github.io/holiday-backend.jpg" alt="Holiday Finder Backend Structure" style="width:100%;display:block;min-height:80px;background:#1a2a3a">
-            </div>
-            <div style="border-radius:8px;overflow:hidden;border:1px solid var(--border)">
-              <img src="https://tosin-akinyemi.github.io/holiday-lessons.png" alt="Holiday Finder Lessons Learned" style="width:100%;display:block;min-height:80px;background:#1a2a3a">
-            </div>
-          </div>
-          <div class="dgrid">
-            <div class="dblock">
-              <h5>My Role</h5>
-              <p>Project Manager — coordinated a cross-functional team of frontend developer, backend developer, and researcher. Oversaw timelines, integration points, and final delivery.</p>
-            </div>
-            <div class="dblock">
-              <h5>Key Features</h5>
-              <p>AI-powered destination recommendations, GDPR-compliant chat history (Save Chat flag), soft-delete user management, audit trail timestamps, BCrypt password hashing, and image optimization via ImageSharp.</p>
-            </div>
-            <div class="dblock">
-              <h5>Tech Stack</h5>
-              <p>Full-stack web application with frontend/backend separation, relational database with session management, CDN storage integration, and compliance-ready data architecture.</p>
-            </div>
-            <div class="dblock">
-              <h5>Reflection</h5>
-              <p>Managing a multidisciplinary team on a consumer-facing product deepened my understanding of how compliance (GDPR), security (BCrypt), and UX must be designed together from the ground up — not bolted on at the end.</p>
-            </div>
-          </div>
-        </div>
-      </article>
-    </div>
-      <article class="pcard" style="border:2px solid var(--gold)">
-        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;margin-bottom:.5rem">
-          <div class="phdr" style="margin-bottom:0"><span class="pnum">02</span><span class="prole">Security Analyst</span></div>
-          <span style="background:var(--gold);color:var(--forest);font-size:.72rem;font-weight:700;padding:.3rem .8rem;border-radius:20px;letter-spacing:.05em;text-transform:uppercase">★ Major Highlight</span>
-        </div>
-        <h3 class="ptitle">Security Analytics — Northeastern University</h3>
-        <p class="pdesc">A series of Security Analytics assignments at Northeastern University covering real-world cybersecurity threats, log analysis, and program design. Projects include a ransomware attack analysis on Habib Bank, a Cybersecurity Program report, an Azure Log Analytics lab using KQL queries, and the Keybrew Lockdown — a full cybersecurity defense proposal for a retail coffee chain.</p>
-        <div class="ptags"><span class="ptag">Security Analytics</span><span class="ptag">Ransomware</span><span class="ptag">Azure Log Analytics</span><span class="ptag">KQL</span><span class="ptag">NIST Framework</span><span class="ptag">Incident Response</span><span class="ptag">Cybersecurity Program</span></div>
-        <div class="poutcome">✓ Comprehensive threat analysis, log-based detection, and a $900K ROI cybersecurity proposal delivered</div>
-        <button class="toggle" onclick="toggleCard(this)" aria-expanded="false">Details <span class="tog-ico">▾</span></button>
-        <div class="pdetail">
-          <div style="margin-bottom:1.25rem">
-            <p style="font-size:.8rem;color:var(--muted);margin-bottom:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em">Keybrew Lockdown — All 7 Slides</p>
-            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.75rem">
-              <div style="border-radius:8px;overflow:hidden;border:1px solid var(--border)"><img src="https://tosin-akinyemi.github.io/keybrew-slide1.jpg" alt="Slide 1 — Keybrew Lockdown Title" style="width:100%;display:block;min-height:80px;background:#1a2a3a"></div>
-              <div style="border-radius:8px;overflow:hidden;border:1px solid var(--border)"><img src="https://tosin-akinyemi.github.io/keybrew-slide2.jpg" alt="Slide 2 — The Wake-Up Call" style="width:100%;display:block;min-height:80px;background:#1a2a3a"></div>
-              <div style="border-radius:8px;overflow:hidden;border:1px solid var(--border)"><img src="https://tosin-akinyemi.github.io/keybrew-slide3.jpg" alt="Slide 3 — Attack Timeline" style="width:100%;display:block;min-height:80px;background:#1a2a3a"></div>
-              <div style="border-radius:8px;overflow:hidden;border:1px solid var(--border)"><img src="https://tosin-akinyemi.github.io/keybrew-slide4.jpg" alt="Slide 4 — NIST Defense Framework" style="width:100%;display:block;min-height:80px;background:#1a2a3a"></div>
-              <div style="border-radius:8px;overflow:hidden;border:1px solid var(--border)"><img src="https://tosin-akinyemi.github.io/keybrew-slide5.jpg" alt="Slide 5 — $900K ROI" style="width:100%;display:block;min-height:80px;background:#1a2a3a"></div>
-              <div style="border-radius:8px;overflow:hidden;border:1px solid var(--border)"><img src="https://tosin-akinyemi.github.io/keybrew-slide6.jpg" alt="Slide 6 — References" style="width:100%;display:block;min-height:80px;background:#1a2a3a"></div>
-              <div style="border-radius:8px;overflow:hidden;border:1px solid var(--border)"><img src="https://tosin-akinyemi.github.io/keybrew-slide7.jpg" alt="Slide 7 — Thank You" style="width:100%;display:block;min-height:80px;background:#1a2a3a"></div>
-            </div>
-          </div>
-          <div class="dgrid">
-            <div class="dblock">
-              <h5>Keybrew Lockdown — Cybersecurity Program</h5>
-              <p>Designed a full credential-attack defense program for a 20-store coffee chain facing $2.8M in losses from POS fraud. Mapped the NIST framework (Identify, Protect, Detect, Respond, Recover) to a $110K pilot with a projected $900K annual savings, covering fingerprint POS login, CrowdStrike threat detection, and 90-second lockdown protocols.</p>
-            </div>
-            <div class="dblock">
-              <h5>Security Attack Report — Habib Bank Ransomware</h5>
-              <p>Analysed a real-world ransomware attack on Habib Bank, tracing the full attack chain from phishing-based initial access through lateral movement, data exfiltration, and ransom demand. Produced remediation recommendations including MFA enforcement, network segmentation, patch management, and real-time anomaly monitoring.</p>
-            </div>
-            <div class="dblock">
-              <h5>Log Analytics — Azure Monitor &amp; KQL</h5>
-              <p>Used Azure Log Analytics with KQL (Kusto Query Language) to filter, summarise, and visualise log data. Queried the StormEvents dataset by state and severity level, grouped results using the summarize operator, and created bar charts and time-series visuals to surface security patterns and anomalies for compliance reporting.</p>
-            </div>
-            <div class="dblock">
-              <h5>Reflection</h5>
-              <p>These assignments connected classroom theory directly to real security incidents and tools. Analysing the Habib Bank breach showed how fast a single stolen credential can cascade into a multi-million dollar loss. The Keybrew project pushed me to think like a security consultant — balancing risk, budget, and operational realities to build a defensible program that a business would actually adopt.</p>
-            </div>
-          </div>
-        </div>
-      </article>
-    <p class="coming">More projects coming soon — this portfolio is updated regularly.</p>
-  </div>
-</section>
-
-<!-- SKILLS -->
-<section id="skills">
-  <div class="container">
-    <span class="eyebrow">Expertise</span>
-    <h2 class="stitle">Skills &amp; Achievements</h2>
-    <div class="sgrid">
-      <div class="scat"><h3>Regulatory Compliance</h3><ul class="spills"><li class="spill">GDPR</li><li class="spill">HIPAA / PIPEDA</li><li class="spill">AML / KYC</li><li class="spill">ISO 27001</li><li class="spill">SOX</li><li class="spill">FCA Regulations</li></ul></div>
-      <div class="scat"><h3>Risk Management</h3><ul class="spills"><li class="spill">Risk Assessment</li><li class="spill">Gap Analysis</li><li class="spill">Internal Audits</li><li class="spill">Controls Testing</li></ul></div>
-      <div class="scat"><h3>Cloud &amp; Security</h3><ul class="spills"><li class="spill">GCP BAA / DLP</li><li class="spill">AWS IAM</li><li class="spill">Cloud Networking</li><li class="spill">Cybersecurity</li></ul></div>
-      <div class="scat"><h3>Project Management</h3><ul class="spills"><li class="spill">Agile Methodologies</li><li class="spill">Stakeholder Mgmt</li><li class="spill">Timeline Management</li><li class="spill">Cross-functional Leadership</li></ul></div>
-      <div class="scat"><h3>Tools &amp; Platforms</h3><ul class="spills"><li class="spill">Microsoft Office Suite</li><li class="spill">GRC Software</li><li class="spill">HubSpot / Salesforce</li><li class="spill">GitHub / HTML</li></ul></div>
-    </div>
-    <span class="eyebrow" style="display:inline-flex;margin-top:3rem">Certifications</span>
-    <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--forest);margin-bottom:1.25rem">Certifications &amp; Milestones</h3>
-    <div class="cgrid">
-      <div class="ccard"><h4>Master's in Informatics — Cloud &amp; InfoSec</h4><div class="cmeta">Northeastern University · Mar 2026</div></div>
-      <div class="ccard"><h4>Diploma in Digital Business Management</h4><div class="cmeta">Toronto School of Management</div></div>
-      <div class="ccard"><h4>100% Audit Pass Rate</h4><div class="cmeta">Achieved consistently across all compliance audits</div></div>
-      <div class="ccard"><h4>HIPAA &amp; PIPEDA Compliance</h4><div class="cmeta">Hands-on implementation across multiple healthcare platforms</div></div>
-    </div>
-    <div style="margin-top:2.5rem">
-      <span class="eyebrow" style="display:inline-flex;margin-bottom:1.25rem">Certificates &amp; Badges</span>
-      <div style="display:flex;flex-direction:column;gap:1.5rem">
-
-        <!-- Hubs Certificate -->
-        <div style="display:flex;flex-wrap:wrap;gap:1.5rem;align-items:flex-start">
-          <div style="border-radius:12px;overflow:hidden;border:2px solid var(--gold);max-width:420px;flex-shrink:0">
-            <img src="https://tosin-akinyemi.github.io/hubs.jpeg" alt="Hubs Certificate" style="width:100%;display:block;min-height:80px;background:#1a2a3a">
-          </div>
-          <div class="ccard" style="flex:1;min-width:220px">
-            <h4>Hubs Certificate</h4>
-            <div class="cmeta">Professional certificate demonstrating expertise and commitment to continuous learning in technology and business.</div>
-          </div>
-        </div>
-
-        <!-- Northeastern Badge -->
-        <div style="display:flex;flex-wrap:wrap;gap:1.5rem;align-items:flex-start">
-          <div style="border-radius:12px;overflow:hidden;border:2px solid var(--gold);width:140px;flex-shrink:0;background:var(--forest);display:flex;align-items:center;justify-content:center;padding:1rem">
-            <img src="https://api.badgr.io/public/badges/7A5lqWqDS2WC4C5AVdvtUQ/image" alt="Co-Curricular Community Service-Learning Advanced Badge" style="width:100%;display:block;border-radius:8px">
-          </div>
-          <div class="ccard" style="flex:1;min-width:220px">
-            <h4>Co-Curricular Community Service-Learning: Advanced</h4>
-            <div class="cmeta" style="margin-bottom:.5rem">Northeastern University &nbsp;&middot;&nbsp; Issued Feb 2026</div>
-            <p style="font-size:.8rem;color:rgba(255,255,255,.75);line-height:1.6;margin:0">Awarded for completing 20+ hours of volunteer service with community organizations over at least three months. Demonstrated competencies in reflective practice, community development, and non-profit communications.</p>
-            <a href="https://badges.parchment.com/v2/credentials/B2JNrmoMSR-6cZy74fMQoQ" target="_blank" rel="noopener" style="display:inline-block;margin-top:.75rem;font-size:.78rem;color:var(--gold);text-decoration:none;font-weight:600">↗ Verify Badge</a>
-          </div>
-        </div>
-
-      </div>
+      <div class="titem"><div class="tmeta"><span class="trole">Website Team Member</span><span class="tco">Research Impact</span><span class="tdate">Jul 2025 – Aug 2025</span></div><ul><li>Coordinated APIs and AI model integrations delivering enhanced website functionality on schedule.</li><li>Managed testing and debugging phases ensuring project milestones were met.</li></ul></div>
+      <div class="titem"><div class="tmeta"><span class="trole">Administrator</span><span class="tco">Covenant Nation</span><span class="tdate">May 2024 – Jan 2025</span></div><ul><li>Responded to client inquiries via phone and email.</li><li>Planned and coordinated travel arrangements and administrative tasks.</li></ul></div>
+      <div class="titem"><div class="tmeta"><span class="trole">Customer Success Manager</span><span class="tco">Shaw Direct</span><span class="tdate">Mar 2023 – Apr 2024</span></div><ul><li>Achieved 50% CSAT increase, 30% retention boost, and 20% account growth.</li><li>Led cross-functional teams to resolve issues first-contact.</li></ul></div>
+      <div class="titem"><div class="tmeta"><span class="trole">Customer Specialist</span><span class="tco">Digital Bananas Technology, Lagos</span><span class="tdate">Mar 2018 – Jan 2022</span></div><ul><li>Oversaw $5M+ ARR portfolio, coordinating upselling campaigns and technical resolutions.</li></ul></div>
     </div>
   </div>
 </section>
@@ -645,12 +276,11 @@ footer{background:var(--dark);text-align:center;padding:1.1rem clamp(1rem,4vw,3r
   <div class="container">
     <span class="eyebrow">Community &amp; Learning</span>
     <h2 class="stitle">Events &amp; Community</h2>
-    <div class="egrid">
+    <div style="display:flex;flex-direction:column;gap:2rem">
       <article class="ecard">
-        <div class="eimg-wrap eimg-bg-forest">
-          <div class="eimg-bg eimg-bg-forest"><div class="eimg-label">Big Data &amp; Analytics Summit</div></div>
-          <img src="https://tosin-akinyemi.github.io/bigdealperfect.jpeg" alt="Big Data Analytics Summit" loading="lazy" style="object-position:center 25%">
-            </div>
+        <div class="eimg-side">
+          <img src="https://tosin-akinyemi.github.io/big%20deal%20perfect.jpeg" alt="Big Data Analytics Summit" loading="lazy" style="object-position:center 25%">
+        </div>
         <div class="ebody">
           <span class="etype">Conference — Attendee</span>
           <h3 class="etitle">11th Annual Big Data &amp; Analytics Summit Canada</h3>
@@ -658,9 +288,8 @@ footer{background:var(--dark);text-align:center;padding:1.1rem clamp(1rem,4vw,3r
         </div>
       </article>
       <article class="ecard">
-        <div class="eimg-wrap eimg-bg-gold">
-          <div class="eimg-bg eimg-bg-gold"><div class="eimg-label">Obsidi Community</div></div>
-          <img src="https://tosin-akinyemi.github.io/obsidi.jpeg" alt="Obsidi Community Event" loading="lazy" style="object-position:center 20%;object-fit:cover;width:100%;height:100%">
+        <div class="eimg-side">
+          <img src="https://tosin-akinyemi.github.io/obsidi.jpeg" alt="Obsidi Community Event" loading="lazy" style="object-position:center 20%">
         </div>
         <div class="ebody">
           <span class="etype">Community — Active Member</span>
@@ -668,7 +297,6 @@ footer{background:var(--dark);text-align:center;padding:1.1rem clamp(1rem,4vw,3r
           <p class="edesc">Active member of the Obsidi professional community, attending local events focused on career development, knowledge sharing, and networking for Black professionals in technology and business.</p>
         </div>
       </article>
-
     </div>
   </div>
 </section>
@@ -681,15 +309,14 @@ footer{background:var(--dark);text-align:center;padding:1.1rem clamp(1rem,4vw,3r
     <div class="bcard">
       <span class="bsrc">Published on LinkedIn</span>
       <h3 class="btitle">Insights from the 11th Annual Big Data &amp; Analytics Summit</h3>
-      <p class="btext">A reflection on how AI, LLMs, and NLP are reshaping data governance and decision-making across industries. The summit reinforced that effective data governance is the foundation for successful AI adoption — the question is no longer what data you have, but how well you govern it.</p>
-      <p class="btext" style="font-size:.82rem;color:rgba(255,255,255,.4)">Key takeaways covered governance automation, data quality frameworks, and the practical steps organizations must take to govern AI responsibly and ethically.</p>
-      <a href="https://www.linkedin.com/in/estheroluakinyemi" target="_blank" rel="noopener" class="btn btn-gold" style="align-self:flex-start">Read on LinkedIn →</a>
+      <p class="btext">A reflection on how AI, LLMs, and NLP are reshaping data governance and decision-making across industries.</p>
+      <a href="https://www.linkedin.com/in/estheroluakinyemi" target="_blank" class="btn btn-gold" style="align-self:flex-start">Read on LinkedIn →</a>
     </div>
     <div class="endsec">
       <h3 class="endtitle">Endorsements</h3>
       <div class="egrid2">
-        <div class="endo"><blockquote>I worked with Esther for over two years. I can easily describe her as prompt, responsive, thorough, organised, visionary, passionate, efficient, and perspective-taking. She adds significant value to any organisation she believes in.</blockquote><cite>Stephen Olateju</cite></div>
-        <div class="endo"><blockquote>Esther is an exceptional addition to any team — she goes all out. She is motivated, and once she commits, she makes sure she delivers. She has a positive competitive drive. I will gladly recommend her for any role.</blockquote><cite>Moyosore Majekobaje</cite></div>
+        <div class="endo"><blockquote>I worked with Esther for over two years. She is prompt, responsive, thorough, organised, visionary, passionate, efficient, and perspective-taking. She adds significant value to any organisation she believes in.</blockquote><cite>Stephen Olateju</cite></div>
+        <div class="endo"><blockquote>Esther is an exceptional addition to any team — she goes all out. She is motivated, and once she commits, she makes sure she delivers. I will gladly recommend her for any role.</blockquote><cite>Moyosore Majekobaje</cite></div>
       </div>
     </div>
   </div>
@@ -709,33 +336,18 @@ footer{background:var(--dark);text-align:center;padding:1.1rem clamp(1rem,4vw,3r
         </div>
         <div class="rlinks">
           <a href="tel:4165395696" class="rlink"><span class="rlbl">Phone</span>416-539-5696</a>
-          <a href="/cdn-cgi/l/email-protection#345147405c51465b584143555556515a5d745359555d581a575b59" class="rlink"><span class="rlbl">Email</span><span class="__cf_email__" data-cfemail="8feafcfbe7eafde0e3faf8eeeeedeae1e6cfe8e2eee6e3a1ece0e2">[email&#160;protected]</span></a>
-          <a href="https://www.linkedin.com/in/estheroluakinyemi" target="_blank" rel="noopener" class="rlink"><span class="rlbl">LinkedIn</span>estheroluakinyemi</a>
-          <a href="https://github.com/tosin-akinyemi" target="_blank" rel="noopener" class="rlink"><span class="rlbl">GitHub</span>tosin-akinyemi</a>
+          <a href="mailto:estheroluwaabeni@gmail.com" class="rlink"><span class="rlbl">Email</span>estheroluwaabeni@gmail.com</a>
+          <a href="https://www.linkedin.com/in/estheroluakinyemi" target="_blank" class="rlink"><span class="rlbl">LinkedIn</span>estheroluakinyemi</a>
+          <a href="https://github.com/tosin-akinyemi" target="_blank" class="rlink"><span class="rlbl">GitHub</span>tosin-akinyemi</a>
         </div>
       </aside>
       <div class="rmain">
-        <div class="rsec">
-          <div class="rstitle">Summary</div>
-          <p style="font-size:.88rem;color:#334155;line-height:1.7">Healthcare Compliance Specialist and Project Coordinator with 5+ years driving customer success across telecom, hospitality, and technology sectors, managing $5M+ ARR. Expert in HIPAA, PIPEDA, GCP compliance, stakeholder coordination, and on-budget delivery.</p>
-        </div>
-        <div class="rsec">
-          <div class="rstitle">Education</div>
+        <div class="rsec"><div class="rstitle">Summary</div><p style="font-size:.88rem;color:#334155;line-height:1.7">Healthcare Compliance Specialist and Project Coordinator with 5+ years driving customer success, managing $5M+ ARR. Expert in HIPAA, PIPEDA, GCP compliance, stakeholder coordination, and on-budget delivery.</p></div>
+        <div class="rsec"><div class="rstitle">Education</div>
           <div class="ritem"><div class="rihdr"><span class="rirole">Master's in Informatics — Cloud Computing &amp; InfoSec</span><span class="ridate">Mar 2026</span></div><div class="rico">Northeastern University</div></div>
           <div class="ritem"><div class="rihdr"><span class="rirole">Diploma in Digital Business Management</span></div><div class="rico">Toronto School of Management</div></div>
-          <div class="ritem"><div class="rihdr"><span class="rirole">Bachelor's in Sociology &amp; Anthropology</span></div></div>
         </div>
-        <div class="rsec">
-          <div class="rstitle">Core Skills</div>
-          <div class="skillrow"><span class="stag">Project Coordination</span><span class="stag">Agile</span><span class="stag">CRM Software</span><span class="stag">Microsoft Office</span><span class="stag">Cybersecurity</span><span class="stag">AWS IAM</span><span class="stag">Cloud Networking</span><span class="stag">GitHub</span><span class="stag">HIPAA/PIPEDA</span><span class="stag">GCP BAA/DLP</span></div>
-        </div>
-        <div class="rsec">
-          <div class="rstitle">Experience</div>
-          <div class="ritem"><div class="rihdr"><span class="rirole">Website Team Member</span><span class="ridate">Jul 2025 – Aug 2025</span></div><div class="rico">Research Impact</div><ul><li>Coordinated API and AI model integrations delivering enhanced website functionality on schedule.</li><li>Managed testing and debugging phases ensuring all milestones and performance targets were met.</li></ul></div>
-          <div class="ritem"><div class="rihdr"><span class="rirole">Customer Success Manager</span><span class="ridate">Mar 2023 – Apr 2024</span></div><div class="rico">Shaw Direct</div><ul><li>Achieved 50% CSAT increase, 30% retention boost, and 20% account growth.</li><li>Led cross-functional teams for first-contact resolution, managing stakeholder expectations.</li></ul></div>
-          <div class="ritem"><div class="rihdr"><span class="rirole">Administrator</span><span class="ridate">May 2024 – Jan 2025</span></div><div class="rico">Covenant Nation</div><ul><li>Managed client inquiries, travel arrangements, and administrative operations efficiently.</li><li>Collaborated across teams to develop strategies improving operational efficiency.</li></ul></div>
-          <div class="ritem"><div class="rihdr"><span class="rirole">Customer Specialist</span><span class="ridate">Mar 2018 – Jan 2022</span></div><div class="rico">Digital Bananas Technology, Lagos</div><ul><li>Oversaw $5M+ ARR portfolio with upselling campaigns and technical resolutions.</li><li>Managed concurrent stakeholder escalations with full solution follow-through.</li></ul></div>
-        </div>
+        <div class="rsec"><div class="rstitle">Core Skills</div><div class="skillrow"><span class="stag">Project Coordination</span><span class="stag">Agile</span><span class="stag">CRM Software</span><span class="stag">Microsoft Office</span><span class="stag">Cybersecurity</span><span class="stag">AWS IAM</span><span class="stag">HIPAA/PIPEDA</span><span class="stag">GCP BAA/DLP</span></div></div>
       </div>
     </div>
   </div>
@@ -748,10 +360,10 @@ footer{background:var(--dark);text-align:center;padding:1.1rem clamp(1rem,4vw,3r
     <h2 class="stitle">Let's Work Together</h2>
     <p style="color:rgba(255,255,255,.5);font-size:.9rem;max-width:480px;margin:0 auto 2.5rem;line-height:1.7">Open to healthcare compliance, project coordination, and networking opportunities.</p>
     <div class="cgrid">
-      <a href="/cdn-cgi/l/email-protection#98fdebecf0fdeaf7f4edeff9f9fafdf6f1d8fff5f9f1f4b6fbf7f5" class="clink"><span class="cltype">Email</span><span class="clval"><span class="__cf_email__" data-cfemail="a9ccdaddc1ccdbc6c5dcdec8c8cbccc7c0e9cec4c8c0c587cac6c4">[email&#160;protected]</span></span></a>
+      <a href="mailto:estheroluwaabeni@gmail.com" class="clink"><span class="cltype">Email</span><span class="clval">estheroluwaabeni@gmail.com</span></a>
       <a href="tel:4165395696" class="clink"><span class="cltype">Phone</span><span class="clval">416-539-5696</span></a>
-      <a href="https://www.linkedin.com/in/estheroluakinyemi" target="_blank" rel="noopener" class="clink"><span class="cltype">LinkedIn</span><span class="clval">linkedin.com/in/estheroluakinyemi</span></a>
-      <a href="https://github.com/tosin-akinyemi" target="_blank" rel="noopener" class="clink"><span class="cltype">GitHub</span><span class="clval">github.com/tosin-akinyemi</span></a>
+      <a href="https://www.linkedin.com/in/estheroluakinyemi" target="_blank" class="clink"><span class="cltype">LinkedIn</span><span class="clval">linkedin.com/in/estheroluakinyemi</span></a>
+      <a href="https://github.com/tosin-akinyemi" target="_blank" class="clink"><span class="cltype">GitHub</span><span class="clval">github.com/tosin-akinyemi</span></a>
     </div>
     <div class="cquote">
       <blockquote>"Effective compliance is not a barrier — it is the foundation upon which great organisations are built."</blockquote>
@@ -764,61 +376,16 @@ footer{background:var(--dark);text-align:center;padding:1.1rem clamp(1rem,4vw,3r
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-
   var burger = document.getElementById('burger');
   var drawer = document.getElementById('drawer');
-
-  function openMenu() {
-    burger.classList.add('open');
-    drawer.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeMenu() {
-    burger.classList.remove('open');
-    drawer.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  if (burger) {
-    burger.addEventListener('click', function(e) {
-      e.stopPropagation();
-      drawer.classList.contains('open') ? closeMenu() : openMenu();
-    });
-  }
-
-  document.querySelectorAll('.dl').forEach(function(a) {
-    a.addEventListener('click', closeMenu);
-  });
-
-  document.addEventListener('click', function(e) {
-    if (drawer && drawer.classList.contains('open') && !drawer.contains(e.target) && !burger.contains(e.target)) {
-      closeMenu();
-    }
-  });
-
-  window.toggleCard = function(btn) {
-    var card = btn.closest('.pcard');
-    var open = card.classList.toggle('open');
-    btn.querySelector('.tog-ico').textContent = open ? '▴' : '▾';
-    btn.childNodes[0].textContent = open ? 'Hide ' : 'Details ';
-  };
-
-  var secs = document.querySelectorAll('section[id]');
-  var links = document.querySelectorAll('.nav-links a');
-  if ('IntersectionObserver' in window && secs.length) {
-    var io = new IntersectionObserver(function(entries) {
-      entries.forEach(function(e) {
-        if (e.isIntersecting) {
-          links.forEach(function(a) {
-            a.style.color = a.getAttribute('href') === '#' + e.target.id ? 'var(--gold2)' : '';
-          });
-        }
-      });
-    }, { rootMargin: '-45% 0px -45% 0px' });
-    secs.forEach(function(s) { io.observe(s); });
-  }
-
+  function openMenu(){burger.classList.add('open');drawer.classList.add('open');document.body.style.overflow='hidden'}
+  function closeMenu(){burger.classList.remove('open');drawer.classList.remove('open');document.body.style.overflow=''}
+  if(burger){burger.addEventListener('click',function(e){e.stopPropagation();drawer.classList.contains('open')?closeMenu():openMenu()})}
+  document.querySelectorAll('.dl').forEach(function(a){a.addEventListener('click',closeMenu)});
+  document.addEventListener('click',function(e){if(drawer&&drawer.classList.contains('open')&&!drawer.contains(e.target)&&!burger.contains(e.target)){closeMenu()}});
+  window.toggleCard=function(btn){var card=btn.closest('.pcard');var open=card.classList.toggle('open');btn.querySelector('.tog-ico').textContent=open?'▴':'▾';btn.childNodes[0].textContent=open?'Hide ':'Details '};
+  var secs=document.querySelectorAll('section[id]');var links=document.querySelectorAll('.nav-links a');
+  if('IntersectionObserver' in window&&secs.length){var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){a.style.color=a.getAttribute('href')==='#'+e.target.id?'var(--gold2)':''})}})},{rootMargin:'-45% 0px -45% 0px'});secs.forEach(function(s){io.observe(s)})}
 });
 </script>
 </body>
